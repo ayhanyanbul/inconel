@@ -1,0 +1,53 @@
+import { CSSProperties, ForwardedRef, ReactNode } from 'react';
+import { FieldFeedbackContentProps } from '../FieldFeedback/FieldFeedback';
+export type OptionValue = string | number;
+export interface SelectHandle {
+    focus: () => void;
+    blur: () => void;
+    clear: () => void;
+}
+type SelectPart = 'root' | 'label' | 'control' | 'input' | 'clearButton' | 'toggleButton' | 'menu' | 'option' | 'message';
+export type SelectClassNames = Partial<Record<SelectPart, string>>;
+export type SelectStyles = Partial<Record<SelectPart, CSSProperties>>;
+export interface SelectProps<T extends object> extends FieldFeedbackContentProps {
+    id?: string;
+    name?: string;
+    label: string;
+    options: T[];
+    value: OptionValue | null;
+    onChange: (value: OptionValue | null, option: T | null) => void;
+    optionLabel: keyof T | ((option: T) => ReactNode);
+    optionValue: keyof T | ((option: T) => OptionValue);
+    getOptionSearchText?: (option: T) => string;
+    isOptionDisabled?: (option: T) => boolean;
+    placeholder?: string;
+    isClearable?: boolean;
+    isDisabled?: boolean;
+    isReadOnly?: boolean;
+    isRequired?: boolean;
+    isLoading?: boolean;
+    loadOptions?: (inputValue: string, signal: AbortSignal) => Promise<T[]>;
+    loadOptionsDebounceMs?: number;
+    asyncErrorMessage?: ReactNode;
+    loadingMessage?: ReactNode;
+    noOptionsMessage?: ReactNode;
+    clearButtonLabel?: string;
+    openMenuButtonLabel?: string;
+    closeMenuButtonLabel?: string;
+    searchLocale?: string;
+    menuPortalTarget?: HTMLElement | null;
+    virtualize?: boolean;
+    virtualizationThreshold?: number;
+    optionHeight?: number;
+    className?: string;
+    classNames?: SelectClassNames;
+    styles?: SelectStyles;
+    onInputChange?: (value: string) => void;
+    onMenuOpen?: () => void;
+    onMenuClose?: () => void;
+}
+declare const Select: <T extends object>(props: SelectProps<T> & {
+    ref?: ForwardedRef<SelectHandle>;
+}) => ReactNode;
+export default Select;
+//# sourceMappingURL=Select.d.ts.map

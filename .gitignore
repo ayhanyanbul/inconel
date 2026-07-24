@@ -1,0 +1,4 @@
+.vite/
+node_modules/
+.npm-cache/
+.DS_Store
