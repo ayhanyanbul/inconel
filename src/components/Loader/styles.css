@@ -1,0 +1,26 @@
+.inconel-loader {
+  display: grid;
+  place-items: center;
+}
+
+.inconel-loader--fullscreen {
+  position: fixed;
+  z-index: 11000;
+  background: rgb(255 255 255 / 80%);
+  inset: 0;
+}
+
+.inconel-loader__spinner {
+  width: 36px;
+  height: 36px;
+  border: 3px solid var(--inconel-color-border);
+  border-top-color: var(--inconel-color-primary);
+  border-radius: 50%;
+  animation: inconel-spin 700ms linear infinite;
+}
+
+.inconel-loader--mini .inconel-loader__spinner {
+  width: 18px;
+  height: 18px;
+  border-width: 2px;
+}

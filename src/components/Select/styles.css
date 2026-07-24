@@ -1,0 +1,100 @@
+.inconel-select-clear,
+.inconel-select-toggle {
+  display: grid;
+  width: 42px;
+  flex: 0 0 auto;
+  place-items: center;
+  border: 0;
+  color: var(--inconel-color-text-muted);
+  background: transparent;
+  cursor: pointer;
+}
+
+.inconel-select-clear {
+  width: 34px;
+  color: var(--inconel-color-placeholder);
+  font-size: 1.35rem;
+}
+
+.inconel-select-clear:hover {
+  color: #344054;
+}
+
+.inconel-select-toggle svg {
+  display: block;
+  transition: transform 160ms ease;
+}
+
+.inconel-is-open .inconel-select-toggle svg {
+  transform: rotate(180deg);
+}
+
+.inconel-select-menu {
+  z-index: 50;
+  overflow-y: auto;
+  margin: 0;
+  padding: 6px;
+  border: 1px solid var(--inconel-color-border-subtle);
+  border-radius: var(--inconel-radius-md);
+  background: var(--inconel-color-surface);
+  box-shadow: var(--inconel-shadow-menu);
+  font-family: var(--inconel-font-family);
+}
+
+.inconel-select-menu-portal {
+  z-index: 9999;
+}
+
+.inconel-select-virtual-content {
+  position: relative;
+  width: 100%;
+}
+
+.inconel-select-option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 11px 12px;
+  border-radius: var(--inconel-radius-sm);
+  color: var(--inconel-color-text);
+  cursor: pointer;
+}
+
+.inconel-select-option.inconel-is-active {
+  background: #f2f4ff;
+}
+
+.inconel-select-option.inconel-is-selected {
+  color: var(--inconel-color-primary-hover);
+  font-weight: 600;
+}
+
+.inconel-select-option.inconel-is-disabled {
+  color: var(--inconel-color-placeholder);
+  cursor: not-allowed;
+}
+
+.inconel-select-message {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 16px 12px;
+  color: var(--inconel-color-text-muted);
+  text-align: center;
+}
+
+.inconel-select-message-error {
+  color: var(--inconel-color-danger);
+}
+
+.inconel-select-spinner {
+  width: 16px;
+  height: 16px;
+  flex: 0 0 auto;
+  border: 2px solid var(--inconel-color-border);
+  border-top-color: var(--inconel-color-primary);
+  border-radius: 50%;
+  animation: inconel-spin 700ms linear infinite;
+}
+

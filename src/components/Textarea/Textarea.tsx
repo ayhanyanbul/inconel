@@ -6,6 +6,9 @@ import {
 
 import FieldFeedback from '../FieldFeedback/FieldFeedback'
 import type { FieldFeedbackContentProps } from '../FieldFeedback/FieldFeedback'
+import '../shared/field.css'
+import '../shared/field-controls.css'
+import './styles.css'
 
 export interface TextareaProps
   extends TextareaHTMLAttributes<HTMLTextAreaElement>,
@@ -71,7 +74,7 @@ const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
           aria-describedby={describedBy}
           className={[
             'inconel-textarea',
-            errorMessage ? 'is-invalid' : '',
+            errorMessage ? 'inconel-is-invalid' : '',
           ].join(' ')}
           style={{ ...style, resize }}
         />

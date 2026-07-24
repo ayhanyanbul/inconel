@@ -14,6 +14,9 @@ import {
 
 import FieldFeedback from '../FieldFeedback/FieldFeedback'
 import type { FieldFeedbackContentProps } from '../FieldFeedback/FieldFeedback'
+import '../shared/field.css'
+import '../shared/field-controls.css'
+import './styles.css'
 import {
   applyInputMask,
   formatInputValue,
@@ -298,7 +301,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
           {label}{required && <span className="inconel-field__required" aria-hidden="true"> *</span>}
         </label>
       )}
-      <div className={['inconel-input-control', visibleError ? 'is-invalid' : '', disabled ? 'is-disabled' : ''].join(' ')}>
+      <div className={['inconel-input-control', visibleError ? 'inconel-is-invalid' : '', disabled ? 'inconel-is-disabled' : ''].join(' ')}>
         {startAdornment && <span className="inconel-input-adornment" aria-hidden="true">{startAdornment}</span>}
         <input
           {...inputProps}

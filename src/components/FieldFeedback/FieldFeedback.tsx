@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react'
+import '../shared/field.css'
 
 export interface FieldFeedbackContentProps {
   hint?: ReactNode
@@ -22,9 +23,11 @@ function FieldFeedback({
     return (
       <p
         id={errorId}
-        className={['inconel-field-feedback', 'is-error', className ?? ''].join(
-          ' ',
-        )}
+        className={[
+          'inconel-field-feedback',
+          'inconel-is-error',
+          className ?? '',
+        ].join(' ')}
         role="alert"
       >
         {errorMessage}
@@ -36,9 +39,11 @@ function FieldFeedback({
     return (
       <p
         id={hintId}
-        className={['inconel-field-feedback', 'is-hint', className ?? ''].join(
-          ' ',
-        )}
+        className={[
+          'inconel-field-feedback',
+          'inconel-is-hint',
+          className ?? '',
+        ].join(' ')}
       >
         {hint}
       </p>

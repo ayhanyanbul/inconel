@@ -6,6 +6,7 @@
     "declarationMap": true
   },
   "include": [
+    "src/styles.d.ts",
     "src/index.ts",
     "src/components/**/*.ts",
     "src/components/**/*.tsx"

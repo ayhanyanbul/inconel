@@ -1,0 +1,12 @@
+.inconel-svg {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.inconel-svg > span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}

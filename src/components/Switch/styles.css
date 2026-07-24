@@ -1,0 +1,50 @@
+.inconel-switch {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--inconel-color-text);
+  font-family: var(--inconel-font-family);
+  cursor: pointer;
+}
+
+.inconel-switch input {
+  position: absolute;
+  overflow: hidden;
+  width: 1px;
+  height: 1px;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.inconel-switch__track {
+  position: relative;
+  width: 42px;
+  height: 24px;
+  border-radius: 999px;
+  background: var(--inconel-color-border);
+  transition: background 160ms ease;
+}
+
+.inconel-switch__thumb {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 1px 3px rgb(16 24 40 / 30%);
+  transition: transform 160ms ease;
+}
+
+.inconel-switch input:focus-visible + .inconel-switch__track {
+  box-shadow: var(--inconel-shadow-focus);
+}
+
+.inconel-switch input:checked + .inconel-switch__track {
+  background: var(--inconel-color-primary);
+}
+
+.inconel-switch input:checked + .inconel-switch__track .inconel-switch__thumb {
+  transform: translateX(18px);
+}

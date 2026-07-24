@@ -1,0 +1,37 @@
+.inconel-input-adornment {
+  display: grid;
+  flex: 0 0 auto;
+  place-items: center;
+  padding: 0 12px;
+  color: var(--inconel-color-text-muted);
+}
+
+.inconel-input-clear {
+  display: grid;
+  width: 36px;
+  flex: 0 0 auto;
+  place-items: center;
+  border: 0;
+  color: var(--inconel-color-placeholder);
+  background: transparent;
+  font-size: 1.35rem;
+  cursor: pointer;
+}
+
+.inconel-input-clear:hover {
+  color: var(--inconel-color-text);
+}
+
+.inconel-input-clear:focus-visible {
+  outline: 2px solid var(--inconel-color-primary);
+  outline-offset: -4px;
+}
+
+.inconel-input-readonly {
+  min-height: 46px;
+  padding: 12px 14px;
+  border: 1px solid var(--inconel-color-border);
+  border-radius: var(--inconel-radius-md);
+  background: var(--inconel-color-surface-muted);
+  font-weight: 600;
+}

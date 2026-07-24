@@ -1,0 +1,42 @@
+.inconel-radio-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.inconel-radio {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--inconel-color-text);
+  font-family: var(--inconel-font-family);
+  cursor: pointer;
+}
+
+.inconel-radio input {
+  position: absolute;
+  overflow: hidden;
+  width: 1px;
+  height: 1px;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.inconel-radio__control {
+  display: grid;
+  width: 18px;
+  height: 18px;
+  flex: 0 0 auto;
+  place-items: center;
+  border: 1px solid var(--inconel-color-border);
+  border-radius: 50%;
+  background: var(--inconel-color-surface);
+}
+
+.inconel-radio input:checked + .inconel-radio__control {
+  border: 5px solid var(--inconel-color-primary);
+}
+
+.inconel-radio input:focus-visible + .inconel-radio__control {
+  box-shadow: var(--inconel-shadow-focus);
+}

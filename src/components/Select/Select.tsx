@@ -22,6 +22,10 @@ import {
 } from '@floating-ui/react'
 import { useVirtualizer } from '@tanstack/react-virtual'
 import { createPortal } from 'react-dom'
+import { classNames as mergeClassNames } from '../shared/classNames'
+import '../shared/field.css'
+import '../shared/field-controls.css'
+import './styles.css'
 
 import FieldFeedback from '../FieldFeedback/FieldFeedback'
 import type { FieldFeedbackContentProps } from '../FieldFeedback/FieldFeedback'
@@ -84,10 +88,6 @@ export interface SelectProps<T extends object> extends FieldFeedbackContentProps
   onInputChange?: (value: string) => void
   onMenuOpen?: () => void
   onMenuClose?: () => void
-}
-
-function cx(...values: Array<string | null | undefined | false>) {
-  return values.filter(Boolean).join(' ')
 }
 
 function SelectInner<T extends object>(
@@ -420,11 +420,11 @@ function SelectInner<T extends object>(
         aria-disabled={disabled}
         aria-posinset={index + 1}
         aria-setsize={filteredOptions.length}
-        className={cx(
+        className={mergeClassNames(
           'inconel-select-option',
-          index === activeIndex && 'is-active',
-          optionId === value && 'is-selected',
-          disabled && 'is-disabled',
+          index === activeIndex && 'inconel-is-active',
+          optionId === value && 'inconel-is-selected',
+          disabled && 'inconel-is-disabled',
           classNames.option,
         )}
         style={{ ...style, ...styles.option }}
@@ -441,7 +441,7 @@ function SelectInner<T extends object>(
   const menuContent = loading ? (
     <div
       role="status"
-      className={cx('inconel-select-message', classNames.message)}
+      className={mergeClassNames('inconel-select-message', classNames.message)}
       style={styles.message}
     >
       <span className="inconel-select-spinner" aria-hidden="true" />
@@ -450,14 +450,14 @@ function SelectInner<T extends object>(
   ) : hasAsyncError ? (
     <div
       role="alert"
-      className={cx('inconel-select-message inconel-select-message-error', classNames.message)}
+      className={mergeClassNames('inconel-select-message inconel-select-message-error', classNames.message)}
       style={styles.message}
     >
       {asyncErrorMessage}
     </div>
   ) : filteredOptions.length === 0 ? (
     <div
-      className={cx('inconel-select-message', classNames.message)}
+      className={mergeClassNames('inconel-select-message', classNames.message)}
       style={styles.message}
     >
       {noOptionsMessage}
@@ -492,7 +492,7 @@ function SelectInner<T extends object>(
       id={listboxId}
       role="listbox"
       aria-labelledby={labelId}
-      className={cx(
+      className={mergeClassNames(
         'inconel-select-menu',
         menuPortalTarget && 'inconel-select-menu-portal',
         classNames.menu,
@@ -508,7 +508,7 @@ function SelectInner<T extends object>(
   return (
     <div
       ref={rootRef}
-      className={cx('inconel-select-field', className, classNames.root)}
+      className={mergeClassNames('inconel-select-field', className, classNames.root)}
       style={styles.root}
     >
       <label
@@ -522,11 +522,11 @@ function SelectInner<T extends object>(
       </label>
       <div
         ref={refs.setReference}
-        className={cx(
+        className={mergeClassNames(
           'inconel-select-control',
-          isOpen && 'is-open',
-          isDisabled && 'is-disabled',
-          Boolean(errorMessage) && 'has-error',
+          isOpen && 'inconel-is-open',
+          isDisabled && 'inconel-is-disabled',
+          Boolean(errorMessage) && 'inconel-has-error',
           classNames.control,
         )}
         style={styles.control}
@@ -572,7 +572,7 @@ function SelectInner<T extends object>(
         {isClearable && value !== null && !isDisabled && !isReadOnly && clearButtonLabel && (
           <button
             type="button"
-            className={cx('inconel-select-clear', classNames.clearButton)}
+            className={mergeClassNames('inconel-select-clear', classNames.clearButton)}
             style={styles.clearButton}
             aria-label={clearButtonLabel}
             onClick={clearSelection}
@@ -582,7 +582,7 @@ function SelectInner<T extends object>(
         )}
         <button
           type="button"
-          className={cx('inconel-select-toggle', classNames.toggleButton)}
+          className={mergeClassNames('inconel-select-toggle', classNames.toggleButton)}
           style={styles.toggleButton}
           aria-label={isOpen ? closeMenuButtonLabel : openMenuButtonLabel}
           aria-expanded={isOpen}

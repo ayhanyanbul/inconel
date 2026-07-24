@@ -1,0 +1,36 @@
+.inconel-checkbox {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--inconel-color-text);
+  font-family: var(--inconel-font-family);
+  cursor: pointer;
+}
+
+.inconel-checkbox input {
+  position: absolute;
+  overflow: hidden;
+  width: 1px;
+  height: 1px;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.inconel-checkbox__control {
+  display: grid;
+  width: 18px;
+  height: 18px;
+  flex: 0 0 auto;
+  place-items: center;
+  border: 1px solid var(--inconel-color-border);
+  border-radius: 5px;
+  background: var(--inconel-color-surface);
+}
+
+.inconel-checkbox input:checked + .inconel-checkbox__control {
+  border: 5px solid var(--inconel-color-primary);
+}
+
+.inconel-checkbox input:focus-visible + .inconel-checkbox__control {
+  box-shadow: var(--inconel-shadow-focus);
+}

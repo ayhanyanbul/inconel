@@ -1,0 +1,47 @@
+.inconel-tooltip {
+  position: relative;
+  display: inline-flex;
+}
+
+.inconel-tooltip__content {
+  position: absolute;
+  z-index: 1000;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  width: max-content;
+  max-width: 280px;
+  padding: 7px 10px;
+  border-radius: 6px;
+  color: #fff;
+  background: #101828;
+  font: 0.8rem/1.4 var(--inconel-font-family);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(-50%);
+  transition: opacity 120ms ease;
+}
+
+.inconel-tooltip:hover .inconel-tooltip__content,
+.inconel-tooltip:focus-within .inconel-tooltip__content {
+  opacity: 1;
+}
+
+.inconel-tooltip--bottom .inconel-tooltip__content {
+  top: calc(100% + 8px);
+  bottom: auto;
+}
+
+.inconel-tooltip--left .inconel-tooltip__content {
+  top: 50%;
+  right: calc(100% + 8px);
+  bottom: auto;
+  left: auto;
+  transform: translateY(-50%);
+}
+
+.inconel-tooltip--right .inconel-tooltip__content {
+  top: 50%;
+  bottom: auto;
+  left: calc(100% + 8px);
+  transform: translateY(-50%);
+}

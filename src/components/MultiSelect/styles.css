@@ -1,0 +1,6 @@
+.inconel-multi-select {
+  margin: 0;
+  padding: 12px;
+  border: 1px solid var(--inconel-color-border);
+  border-radius: var(--inconel-radius-md);
+}

@@ -36,6 +36,7 @@ export default defineConfig(({ mode }) => {
             external: [
               '@floating-ui/react',
               '@tanstack/react-virtual',
+              'react-svg',
               'react',
               'react-dom',
               'react/jsx-runtime',

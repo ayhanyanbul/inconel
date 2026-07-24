@@ -1,0 +1,36 @@
+.inconel-field,
+.inconel-select-field {
+  position: relative;
+  color: var(--inconel-color-text);
+  font-family: var(--inconel-font-family);
+}
+
+.inconel-field--full-width {
+  width: 100%;
+}
+
+.inconel-field__label,
+.inconel-select-field > label {
+  display: block;
+  margin-bottom: 8px;
+  color: #344054;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.inconel-field-feedback {
+  margin: 7px 0 0;
+  font-size: 0.82rem;
+}
+
+.inconel-field-feedback.inconel-is-hint {
+  color: var(--inconel-color-text-muted);
+}
+
+.inconel-field-feedback.inconel-is-error {
+  color: var(--inconel-color-danger);
+}
+
+.inconel-field__required {
+  color: var(--inconel-color-danger);
+}

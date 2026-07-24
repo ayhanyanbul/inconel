@@ -1,0 +1,24 @@
+.inconel-tabs__list {
+  display: flex;
+  gap: 4px;
+  border-bottom: 1px solid var(--inconel-color-border);
+}
+
+.inconel-tabs__tab {
+  padding: 10px 14px;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  color: var(--inconel-color-text-muted);
+  background: transparent;
+  font: 600 0.9rem var(--inconel-font-family);
+  cursor: pointer;
+}
+
+.inconel-tabs__tab.inconel-is-active {
+  border-bottom-color: var(--inconel-color-primary);
+  color: var(--inconel-color-primary-hover);
+}
+
+.inconel-tabs__panel {
+  padding: 16px 0;
+}

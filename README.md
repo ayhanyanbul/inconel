@@ -22,6 +22,19 @@ import 'inconel/styles.css'
 
 ## Components
 
+Inconel ayrıca şu bağımsız ve TypeScript tipli bileşen ailelerini sunar:
+
+`Button`, `Checkbox`, `CheckboxGroup`, `RadioGroup`, `Switch`,
+`CustomizableSwitch`, `Modal`, `Tooltip`, `Tabs`, `SlideTabs`, `Loader`,
+`LoaderMini`, `DotLoader`, `ReadOnly`, `FileUpload`, `FileUploadText`,
+`DragDropUpload`, `DndFileUpload`, `DatePicker`, `CurrencyInput`, `TextInput`,
+`InputText`, `Table`, `DataGrid`, `ExcelTable`, `HTMLTable`, `Filter`,
+`MultiSelect`, `MultiSelectWithCheckbox`, `HtmlEditor`, `TextEditor`,
+`SocketStatus`, `Option` ve `OptionWithIcon`.
+
+Bu bileşenler uygulamaya özel store, servis, i18n veya asset bağımlılığı
+taşımaz. Tüm dahili class ve durum class adları `inconel-` ile başlar.
+
 ### Select
 
 ```tsx
@@ -160,6 +173,24 @@ import { Textarea } from 'inconel'
   fullWidth
 />
 ```
+
+### Svg
+
+`Svg`, harici bir SVG dosyasını sayfaya inline olarak yükler:
+
+```tsx
+import { Svg } from 'inconel'
+
+<Svg
+  src="/icons/check.svg"
+  title="Onaylandı"
+  className="my-icon"
+  onClick={() => console.log('clicked')}
+/>
+```
+
+`render={false}` verildiğinde veya `src` belirtilmediğinde bileşen render
+edilmez. Ana wrapper her zaman `inconel-svg` sınıfını taşır.
 
 ## Theming
 

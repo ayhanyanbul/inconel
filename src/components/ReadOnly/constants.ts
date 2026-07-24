@@ -1,0 +1,1 @@
+export const DEFAULT_READ_ONLY_EMPTY_VALUE = '—'

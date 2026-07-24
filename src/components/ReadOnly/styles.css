@@ -1,0 +1,12 @@
+.inconel-read-only {
+  display: grid;
+  gap: 6px;
+  color: var(--inconel-color-text);
+  font-family: var(--inconel-font-family);
+}
+
+.inconel-read-only__label {
+  color: var(--inconel-color-text-muted);
+  font-size: 0.82rem;
+  font-weight: 600;
+}

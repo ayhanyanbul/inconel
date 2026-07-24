@@ -1,0 +1,20 @@
+.inconel-textarea {
+  display: block;
+  width: 100%;
+  min-height: 96px;
+  padding: 12px 14px;
+  border: 1px solid var(--inconel-color-border);
+  border-radius: var(--inconel-radius-md);
+  outline: 0;
+  color: var(--inconel-color-text);
+  background: var(--inconel-color-surface);
+  box-shadow: 0 1px 2px rgb(16 24 40 / 5%);
+  font: inherit;
+  line-height: 1.5;
+  transition: border-color 160ms ease, box-shadow 160ms ease;
+}
+
+.inconel-textarea:focus {
+  border-color: var(--inconel-color-primary);
+  box-shadow: var(--inconel-shadow-focus);
+}

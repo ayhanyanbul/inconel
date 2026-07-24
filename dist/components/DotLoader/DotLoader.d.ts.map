@@ -1,0 +1,1 @@
+{"version":3,"file":"DotLoader.d.ts","sourceRoot":"","sources":["../../../src/components/DotLoader/DotLoader.tsx"],"names":[],"mappings":"AAAA,OAAO,KAAK,EAAE,cAAc,EAAE,MAAM,OAAO,CAAA;AAG3C,OAAO,cAAc,CAAA;AAGrB,MAAM,WAAW,cAAe,SAAQ,cAAc,CAAC,eAAe,CAAC;IACrE,KAAK,CAAC,EAAE,MAAM,CAAA;CACf;AAED,wBAAgB,SAAS,CAAC,EACxB,KAAgC,EAChC,SAAS,EACT,GAAG,KAAK,EACT,EAAE,cAAc,+BAahB"}

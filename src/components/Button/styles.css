@@ -1,0 +1,51 @@
+.inconel-button {
+  display: inline-flex;
+  min-height: 40px;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border: 1px solid transparent;
+  border-radius: var(--inconel-radius-sm);
+  font: 600 0.9rem/1 var(--inconel-font-family);
+  cursor: pointer;
+}
+
+.inconel-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+.inconel-button--primary {
+  color: #fff;
+  background: var(--inconel-color-primary);
+}
+
+.inconel-button--secondary {
+  border-color: var(--inconel-color-border);
+  color: var(--inconel-color-text);
+  background: var(--inconel-color-surface);
+}
+
+.inconel-button--danger {
+  color: #fff;
+  background: var(--inconel-color-danger);
+}
+
+.inconel-button--ghost {
+  color: var(--inconel-color-primary-hover);
+  background: transparent;
+}
+
+.inconel-button--full-width {
+  width: 100%;
+}
+
+.inconel-button__spinner {
+  width: 14px;
+  height: 14px;
+  border: 2px solid currentcolor;
+  border-right-color: transparent;
+  border-radius: 50%;
+  animation: inconel-spin 700ms linear infinite;
+}

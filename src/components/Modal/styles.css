@@ -1,0 +1,52 @@
+.inconel-modal-backdrop {
+  position: fixed;
+  z-index: 10000;
+  display: grid;
+  padding: 24px;
+  background: rgb(16 24 40 / 55%);
+  inset: 0;
+  place-items: center;
+}
+
+.inconel-modal {
+  overflow: hidden;
+  width: min(100%, 640px);
+  max-height: calc(100vh - 48px);
+  border-radius: var(--inconel-radius-md);
+  color: var(--inconel-color-text);
+  background: var(--inconel-color-surface);
+  box-shadow: var(--inconel-shadow-menu);
+  font-family: var(--inconel-font-family);
+}
+
+.inconel-modal__header,
+.inconel-modal__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--inconel-color-border-subtle);
+}
+
+.inconel-modal__footer {
+  justify-content: flex-end;
+  border-top: 1px solid var(--inconel-color-border-subtle);
+  border-bottom: 0;
+}
+
+.inconel-modal__title {
+  font-weight: 700;
+}
+
+.inconel-modal__content {
+  overflow: auto;
+  padding: 20px;
+}
+
+.inconel-modal__close {
+  border: 0;
+  color: var(--inconel-color-text-muted);
+  background: transparent;
+  font-size: 1.5rem;
+  cursor: pointer;
+}

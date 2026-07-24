@@ -1,0 +1,18 @@
+.inconel-drag-drop-upload {
+  display: flex;
+  min-height: 140px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 20px;
+  border: 2px dashed var(--inconel-color-border);
+  border-radius: var(--inconel-radius-md);
+  color: var(--inconel-color-text-muted);
+  font-family: var(--inconel-font-family);
+}
+
+.inconel-drag-drop-upload.inconel-is-dragging {
+  border-color: var(--inconel-color-primary);
+  background: #f2f4ff;
+}

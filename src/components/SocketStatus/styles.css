@@ -1,0 +1,21 @@
+.inconel-socket-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: var(--inconel-color-text-muted);
+  font-family: var(--inconel-font-family);
+}
+
+.inconel-socket-status i {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.inconel-socket-status.inconel-is-connected i {
+  background: #12b76a;
+}
+
+.inconel-socket-status.inconel-is-disconnected i {
+  background: var(--inconel-color-danger);
+}

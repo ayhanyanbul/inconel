@@ -1,0 +1,16 @@
+.inconel-date-picker {
+  display: grid;
+  gap: 6px;
+  color: var(--inconel-color-text);
+  font-family: var(--inconel-font-family);
+}
+
+.inconel-date-picker input {
+  min-height: 44px;
+  padding: 8px 12px;
+  border: 1px solid var(--inconel-color-border);
+  border-radius: var(--inconel-radius-md);
+  color: inherit;
+  background: var(--inconel-color-surface);
+  font: inherit;
+}

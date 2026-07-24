@@ -1,0 +1,25 @@
+.inconel-file-upload {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--inconel-color-text-muted);
+  font-family: var(--inconel-font-family);
+}
+
+.inconel-file-upload input {
+  position: absolute;
+  overflow: hidden;
+  width: 1px;
+  height: 1px;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.inconel-file-upload__button {
+  padding: 9px 13px;
+  border: 1px solid var(--inconel-color-border);
+  border-radius: var(--inconel-radius-sm);
+  color: var(--inconel-color-text);
+  background: var(--inconel-color-surface);
+  cursor: pointer;
+}

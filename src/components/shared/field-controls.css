@@ -1,0 +1,50 @@
+.inconel-input-control,
+.inconel-select-control {
+  display: flex;
+  overflow: hidden;
+  width: 100%;
+  border: 1px solid var(--inconel-color-border);
+  border-radius: var(--inconel-radius-md);
+  background: var(--inconel-color-surface);
+  box-shadow: 0 1px 2px rgb(16 24 40 / 5%);
+  transition: border-color 160ms ease, box-shadow 160ms ease;
+}
+
+.inconel-input-control:focus-within,
+.inconel-select-control:focus-within,
+.inconel-select-control.inconel-is-open {
+  border-color: var(--inconel-color-primary);
+  box-shadow: var(--inconel-shadow-focus);
+}
+
+.inconel-input-control.inconel-is-invalid,
+.inconel-select-control.inconel-has-error,
+.inconel-textarea.inconel-is-invalid {
+  border-color: var(--inconel-color-danger);
+}
+
+.inconel-input-control.inconel-is-disabled,
+.inconel-select-control.inconel-is-disabled {
+  color: var(--inconel-color-placeholder);
+  background: #f2f4f7;
+  cursor: not-allowed;
+}
+
+.inconel-input,
+.inconel-select-control input {
+  width: 100%;
+  min-width: 0;
+  padding: 12px 14px;
+  border: 0;
+  outline: 0;
+  color: var(--inconel-color-text);
+  background: transparent;
+  font: inherit;
+}
+
+.inconel-input::placeholder,
+.inconel-textarea::placeholder,
+.inconel-select-control input::placeholder {
+  color: var(--inconel-color-placeholder);
+  opacity: 1;
+}
