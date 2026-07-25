@@ -99,7 +99,7 @@ export function TextEditor({
           toolbar:
             'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link table inconelGallery | align lineheight | numlist bullist indent outdent | removeformat',
           menubar: false,
-          setup: (editor) => {
+          setup: (editor: unknown) => {
             if (!adapters.media?.open) return
             const api = editor as unknown as EditorApi
             api.ui.registry.addButton('inconelGallery', {

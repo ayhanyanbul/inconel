@@ -1,3 +1,20 @@
+const memoryStorage = new Map();
+
+const getStorage = () => {
+  try {
+    if (typeof window !== 'undefined' && window.localStorage) {
+      return window.localStorage;
+    }
+  } catch {
+    // Sandboxed browsers and test environments may block localStorage.
+  }
+
+  return {
+    getItem: key => memoryStorage.get(key) ?? null,
+    setItem: (key, value) => memoryStorage.set(key, value)
+  };
+};
+
 export const useInconelTableStorage = ({ storageMainKey = 'INCONELTABLE', isCrypto = true } = {}) => {
   /*
 		STORAGE STRUCTURE
@@ -17,7 +34,7 @@ export const useInconelTableStorage = ({ storageMainKey = 'INCONELTABLE', isCryp
   const decodeString = str => (isCrypto ? window.atob(str) : str); // return "{key, value}"
 
   const getMainStorage = () => {
-    const storage = localStorage.getItem(storageMainKey);
+    const storage = getStorage().getItem(storageMainKey);
 
     if (isValidVariable(storage)) {
       try {
@@ -58,7 +75,7 @@ export const useInconelTableStorage = ({ storageMainKey = 'INCONELTABLE', isCryp
 
     const dataString = JSON.stringify(newStorage);
 
-    localStorage.setItem(storageMainKey, encodeString(dataString));
+    getStorage().setItem(storageMainKey, encodeString(dataString));
 
     return true;
   };

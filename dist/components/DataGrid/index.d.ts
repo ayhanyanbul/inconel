@@ -1,3 +1,3 @@
 export { DataGrid } from './DataGrid';
-export type { DataGridProps } from './DataGrid';
+export type { DataGridItem, DataGridProps } from './DataGrid';
 //# sourceMappingURL=index.d.ts.map

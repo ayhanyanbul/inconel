@@ -12,12 +12,12 @@ export type SelectStyles = Partial<Record<SelectPart, CSSProperties>>;
 export interface SelectProps<T extends object> extends FieldFeedbackContentProps {
     id?: string;
     name?: string;
-    label: string;
-    options: T[];
-    value: OptionValue | null;
-    onChange: (value: OptionValue | null, option: T | null) => void;
-    optionLabel: keyof T | ((option: T) => ReactNode);
-    optionValue: keyof T | ((option: T) => OptionValue);
+    label?: ReactNode;
+    options?: T[];
+    value?: OptionValue | T | null;
+    onChange?: ((value: OptionValue | null, option: T | null) => void) | ((option: T | null) => void);
+    optionLabel?: keyof T | ((option: T) => ReactNode);
+    optionValue?: keyof T | ((option: T) => OptionValue);
     getOptionSearchText?: (option: T) => string;
     isOptionDisabled?: (option: T) => boolean;
     placeholder?: string;
@@ -45,6 +45,26 @@ export interface SelectProps<T extends object> extends FieldFeedbackContentProps
     onInputChange?: (value: string) => void;
     onMenuOpen?: () => void;
     onMenuClose?: () => void;
+    autoFocus?: boolean;
+    selectClassName?: string;
+    disabled?: boolean;
+    isSearchable?: boolean;
+    readOnly?: boolean;
+    defaultValue?: OptionValue | T | null;
+    errorPlace?: 'in' | 'out' | string;
+    onBlur?: () => void;
+    setFieldValue?: OptionValue | string | null;
+    render?: boolean;
+    singleValue?: boolean;
+    sortByUppercase?: boolean;
+    selectClassNamePrefix?: string;
+    menuPlacement?: 'auto' | 'bottom' | 'top';
+    maxMenuHeight?: number;
+    inputClassName?: string;
+    labelClassName?: string;
+    size?: string;
+    required?: boolean;
+    components?: Record<string, unknown>;
 }
 declare const Select: <T extends object>(props: SelectProps<T> & {
     ref?: ForwardedRef<SelectHandle>;

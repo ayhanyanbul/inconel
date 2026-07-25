@@ -1,8 +1,24 @@
 import { ReactNode } from 'react';
-import { FileUploadProps } from '../FileUpload';
-export interface DragDropUploadProps extends FileUploadProps {
+export interface DragDropUploadProps {
+    id?: string | null;
+    name?: string | null;
+    label?: ReactNode;
+    value?: File[];
+    files?: File[];
+    accept?: string;
+    multiple?: boolean;
+    disabled?: boolean;
+    className?: string | null;
+    helperText?: ReactNode;
+    emptyText?: ReactNode;
+    buttonText?: ReactNode;
+    clearText?: ReactNode;
+    onChange?: (files: File[]) => void;
+    onFilesChange?: (files: File[]) => void;
     onDropFiles?: (files: File[]) => void;
-    dropLabel?: ReactNode;
+    render?: boolean;
+    uploadIcon?: string;
+    clearIcon?: string;
 }
-export declare function DragDropUpload({ onDropFiles, dropLabel, className, ...props }: DragDropUploadProps): import("react").JSX.Element;
+export declare function DragDropUpload({ id, name, label, value, files, accept, multiple, disabled, className, helperText, emptyText, buttonText, clearText, onChange, onFilesChange, onDropFiles, render, uploadIcon, clearIcon, }: DragDropUploadProps): import("react").JSX.Element | null;
 //# sourceMappingURL=DragDropUpload.d.ts.map

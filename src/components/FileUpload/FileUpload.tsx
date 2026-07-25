@@ -13,7 +13,7 @@ import './styles.css'
 export interface FileUploadProps
   extends Omit<
     InputHTMLAttributes<HTMLInputElement>,
-    'type' | 'onChange' | 'id'
+    'type' | 'onChange' | 'id' | 'placeholder'
   > {
   id?: string | null
   label?: ReactNode

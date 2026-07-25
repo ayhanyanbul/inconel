@@ -12,6 +12,8 @@ export interface Column<T extends object = Record<string, unknown>> {
   accessor?: keyof T | string
   header?: ReactNode
   label?: ReactNode
+  title?: ReactNode
+  dataKey?: keyof T | string
   render?: (row: T, index: number) => ReactNode
   [key: string]: unknown
 }
@@ -37,7 +39,23 @@ function TableInner<T extends object>(
   const Component = LegacyTable as unknown as (
     props: TableProps<T> & { ref?: ForwardedRef<unknown> },
   ) => ReactNode
-  return <Component {...props} ref={ref} />
+  const columns = props.columns?.map((column, index) => {
+    const key = column.key ?? column.accessor ?? column.id ?? String(index)
+    return {
+      ...column,
+      id: column.id ?? String(key),
+      title: column.title ?? column.header ?? column.label ?? '',
+      dataKey: column.dataKey ?? key,
+    }
+  })
+  return (
+    <Component
+      {...props}
+      id={props.id ?? 'inconel-table'}
+      columns={columns}
+      ref={ref}
+    />
+  )
 }
 
 export const Table = forwardRef(TableInner) as <T extends object>(

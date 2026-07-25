@@ -1,8 +1,10 @@
 export {
   InconelProvider,
+  type InconelProviderProps,
+} from './InconelProvider'
+export {
   useInconelAdapters,
   type InconelAdapters,
   type InconelMediaAdapter,
-  type InconelProviderProps,
   type InconelSocketState,
-} from './InconelProvider'
+} from './context'

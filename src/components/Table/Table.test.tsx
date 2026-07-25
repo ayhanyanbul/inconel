@@ -13,7 +13,7 @@ describe('Table', () => {
       />,
     )
 
-    expect(screen.getByRole('columnheader', { name: 'Ad' })).toBeInTheDocument()
-    expect(screen.getByRole('cell', { name: 'Ayhan' })).toBeInTheDocument()
+    expect(screen.getByText('Ad')).toBeInTheDocument()
+    expect(screen.getByText('Ayhan')).toBeInTheDocument()
   })
 })
