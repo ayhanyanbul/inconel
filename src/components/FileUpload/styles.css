@@ -1,18 +1,23 @@
 .inconel-file-upload {
-  display: flex;
-  align-items: center;
+  display: grid;
   gap: 10px;
   color: var(--inconel-color-text-muted);
   font-family: var(--inconel-font-family);
 }
 
-.inconel-file-upload input {
+.inconel-file-upload__input {
   position: absolute;
   overflow: hidden;
   width: 1px;
   height: 1px;
   clip: rect(0 0 0 0);
   white-space: nowrap;
+}
+
+.inconel-file-upload__label {
+  color: var(--inconel-color-text);
+  font-size: 0.9rem;
+  font-weight: 600;
 }
 
 .inconel-file-upload__button {
@@ -22,4 +27,18 @@
   color: var(--inconel-color-text);
   background: var(--inconel-color-surface);
   cursor: pointer;
+}
+
+.inconel-file-upload__button.inconel-is-disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+.inconel-file-upload__button.inconel-is-error {
+  border-color: var(--inconel-color-danger);
+}
+
+.inconel-file-upload__error {
+  color: var(--inconel-color-danger);
+  font-size: 0.82rem;
 }

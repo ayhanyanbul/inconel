@@ -1,0 +1,32 @@
+.inconeltable-footer {
+  position: relative;
+  left: 0px;
+  top: 0px;
+  margin: 0px;
+  padding: 0px;
+  width: 100%;
+  font-weight: bold;
+  overflow: hidden;
+  background-color: var(--grid-table-footer-bgcolor);
+
+  border-left: var(--grid-border);
+  border-right: var(--grid-border);
+  border-bottom: var(--grid-border);
+
+  .inconeltable-footer-left,
+  .inconeltable-footer-center,
+  .inconeltable-footer-right {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    height: 100%;
+    overflow: hidden;
+    border-left: var(--grid-border);
+
+    & > div {
+      position: relative;
+      display: inline-flex;
+      white-space: nowrap;
+    }
+  }
+}

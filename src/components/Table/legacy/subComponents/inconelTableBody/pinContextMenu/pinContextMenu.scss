@@ -1,0 +1,40 @@
+@use '../../styles/inconelTableMixins' as tabMix;
+
+@include tabMix.inconeltable-keyframes('inconeltable-pin-context-menu-animation') {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.inconeltable-pin-context-menu {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  overflow: hidden;
+  user-select: none;
+  z-index: 4;
+  background-color: var(--grid-context-menu-bgcolor);
+  border: 1px solid var(--grid-context-menu-border-color);
+  box-shadow: 2px 2px 3px -1px var(--grid-context-menu-shadow-color);
+
+  @include tabMix.inconeltable-animation('inconeltable-pin-context-menu-animation ease-out 0.3s 1 forwards');
+
+  .inconeltable-pin-context-menu-item {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 22px;
+    padding: 3px 5px;
+    font-size: 12px;
+    transition: background-color 0.2s ease-out;
+    cursor: pointer;
+
+    &:hover {
+      background-color: var(--grid-context-menu-item-hover-color);
+    }
+  }
+}

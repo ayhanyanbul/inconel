@@ -5,12 +5,58 @@
   font-family: var(--inconel-font-family);
 }
 
-.inconel-date-picker input {
-  min-height: 44px;
-  padding: 8px 12px;
+.inconel-date-picker__label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.inconel-date-picker__control {
+  position: relative;
+}
+
+.inconel-date-picker__control--bordered .inconel-date-picker__input {
   border: 1px solid var(--inconel-color-border);
+}
+
+.inconel-date-picker__input {
+  width: 100%;
+  min-height: 44px;
+  padding: 8px 38px 8px 12px;
+  border: 0;
   border-radius: var(--inconel-radius-md);
+  outline: 0;
   color: inherit;
   background: var(--inconel-color-surface);
   font: inherit;
+}
+
+.inconel-date-picker__input:focus {
+  border-color: var(--inconel-color-primary);
+  box-shadow: var(--inconel-shadow-focus);
+}
+
+.inconel-date-picker__input.inconel-is-invalid {
+  border-color: var(--inconel-color-danger);
+}
+
+.inconel-date-picker__icon {
+  position: absolute;
+  top: 50%;
+  right: 12px;
+  width: 18px;
+  height: 18px;
+  pointer-events: none;
+  transform: translateY(-50%);
+}
+
+.inconel-date-picker__error {
+  color: var(--inconel-color-danger);
+  font-size: 0.82rem;
+}
+
+.inconel-date-picker.inconel-is-disabled {
+  opacity: 0.65;
 }

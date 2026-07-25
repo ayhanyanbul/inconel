@@ -1,0 +1,106 @@
+.inconeltable-drag-shadow {
+  position: absolute;
+  top: -500px;
+  border-left: var(--grid-drag-shadow-border);
+  border-top: var(--grid-drag-shadow-border);
+  z-index: 9999;
+
+  & > div {
+    background-color: var(--grid-drag-shadow-bg-color);
+    border-right: var(--grid-drag-shadow-border);
+    border-bottom: var(--grid-drag-shadow-border);
+    pointer-events: none;
+    user-select: none;
+  }
+}
+
+.inconeltable-header {
+  position: relative;
+  left: 0px;
+  top: 0px;
+  margin: 0px;
+  padding: 0px;
+  width: 100%;
+  background-color: var(--grid-table-header-bgcolor);
+  border-right: var(--grid-header-border);
+  border-bottom: var(--grid-shadow-border);
+  input[type='checkbox'] {
+    &:focus {
+      outline: none;
+    }
+  }
+
+  &.inconeltable-header-all-hided {
+    border-left: var(--grid-header-border);
+  }
+
+  .inconeltable-header-left,
+  .inconeltable-header-center,
+  .inconeltable-header-right {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    height: 100%;
+
+    overflow: hidden;
+
+    border-left: var(--grid-border);
+
+    & > div {
+      position: absolute;
+      left: 0px;
+      top: 0px;
+      height: 100%;
+
+      // transition: transform 0.1s linear;
+    }
+  }
+
+  .inconeltable-header-left {
+    background-color: var(--grid-table-header-pin-left-bgcolor);
+  }
+
+  .inconeltable-header-right {
+    background-color: var(--grid-table-header-pin-right-bgcolor);
+    border-right: var(--grid-header-border);
+  }
+
+  .inconeltable-header-content {
+    position: relative;
+    left: 0px;
+    top: 0px;
+    margin: 0px;
+    padding: 0px;
+
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.inconeltable-header-system {
+  position: absolute;
+  display: flex;
+  justify-content: flex-end;
+  //align-items: flex-end;
+  align-items: center;
+  height: 100%;
+
+  border-left: var(--grid-border);
+  // border-bottom: $general-border;
+
+  .inconeltable-header-system-check {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    //height: 30px;
+    height: 20px;
+    margin-right: -1px;
+    border-left: 1px solid transparent;
+
+    input {
+      margin-top: 1px;
+    }
+  }
+}

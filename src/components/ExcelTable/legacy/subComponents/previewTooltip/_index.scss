@@ -1,0 +1,22 @@
+.inconel-excel-table-cell-preview-text {
+  position: absolute;
+  inset: 0;
+  width: fit-content;
+  height: fit-content;
+  z-index: 5;
+
+  span {
+    position: relative;
+    display: inline-block;
+    left: -100%;
+    max-width: 200px;
+    padding: 3px 8px;
+    background-color: #fffacc;
+    color: #000000;
+    border-radius: 3px;
+    box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.5);
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+}

@@ -1,2 +1,2 @@
 export { ExcelTable } from './ExcelTable'
-export type { ExcelTableProps } from './ExcelTable'
+export type { ExcelTableColumn, ExcelTableProps } from './ExcelTable'

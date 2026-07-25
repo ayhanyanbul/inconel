@@ -1,0 +1,13 @@
+.inconel-loader-mini {
+  display: inline-grid;
+  place-items: center;
+}
+
+.inconel-loader-mini__donut {
+  width: 18px;
+  height: 18px;
+  border: 2px solid var(--inconel-color-border);
+  border-top-color: var(--inconel-color-primary);
+  border-radius: 50%;
+  animation: inconel-spin 700ms linear infinite;
+}

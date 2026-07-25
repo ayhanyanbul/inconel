@@ -1,18 +1,70 @@
 .inconel-drag-drop-upload {
+  display: grid;
+  gap: 8px;
+  color: var(--inconel-color-text);
+  font-family: var(--inconel-font-family);
+}
+
+.inconel-drag-drop-upload__label {
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.inconel-drag-drop-upload__area {
   display: flex;
   min-height: 140px;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 10px;
+  gap: 14px;
   padding: 20px;
   border: 2px dashed var(--inconel-color-border);
   border-radius: var(--inconel-radius-md);
   color: var(--inconel-color-text-muted);
-  font-family: var(--inconel-font-family);
+  cursor: pointer;
 }
 
-.inconel-drag-drop-upload.inconel-is-dragging {
+.inconel-drag-drop-upload.inconel-is-dragging
+  .inconel-drag-drop-upload__area {
   border-color: var(--inconel-color-primary);
   background: #f2f4ff;
+}
+
+.inconel-drag-drop-upload.inconel-is-disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+.inconel-drag-drop-upload__input {
+  position: absolute;
+  overflow: hidden;
+  width: 1px;
+  height: 1px;
+  clip: rect(0 0 0 0);
+}
+
+.inconel-drag-drop-upload__icon {
+  width: 28px;
+  height: 28px;
+}
+
+.inconel-drag-drop-upload__content {
+  display: grid;
+  flex: 1;
+  gap: 4px;
+}
+
+.inconel-drag-drop-upload__error {
+  color: var(--inconel-color-danger);
+}
+
+.inconel-drag-drop-upload__clear,
+.inconel-drag-drop-upload__pick {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 12px;
+  border: 1px solid var(--inconel-color-border);
+  border-radius: var(--inconel-radius-sm);
+  color: var(--inconel-color-text);
+  background: var(--inconel-color-surface);
 }

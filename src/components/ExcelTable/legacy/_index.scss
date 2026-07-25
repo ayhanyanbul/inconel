@@ -1,0 +1,95 @@
+.inconel-excel-table {
+  --font-color: #000000;
+  --header-bg-color: rgb(255, 255, 255);
+  --body-bg-color: rgb(255, 255, 255);
+  --border-color: #e1e1e1;
+  --border-bold-color: #cccccc;
+
+  &.is-dark {
+    --font-color: #c1c1c1;
+    --header-bg-color: rgb(35, 35, 40);
+    --body-bg-color: rgb(35, 35, 40);
+    --border-color: #3f3f3f;
+    --border-bold-color: #222222;
+  }
+
+  --selection-color: rgb(15, 128, 240);
+  --border-right: inset -1px 0 0 0 var(--border-color);
+  --border-left: inset 1px 0 0 0 var(--border-color);
+  --border-top: inset 0 1px 0 0 var(--border-color);
+  --border-bottom: inset 0 -1px 0 0 var(--border-color);
+
+  --selected-border-right: inset -2px 0 0 0 var(--selection-color);
+  --selected-border-left: inset 2px 0 0 0 var(--selection-color);
+  --selected-border-top: inset 0 2px 0 0 var(--selection-color);
+  --selected-border-bottom: inset 0 -2px 0 0 var(--selection-color);
+
+  --clipboard-thickness: 6px;
+  --clipboard-size: 2px;
+  --clipboard-duration: 10s;
+  --clipboard-cut-color: rgb(248, 15, 15);
+  --clipboard-copy-color: rgb(15, 248, 93);
+  --clipboard-top-cut: linear-gradient(90deg, var(--clipboard-cut-color), 50%, transparent 50%);
+  --clipboard-bottom-cut: linear-gradient(90deg, var(--clipboard-cut-color), 50%, transparent 50%);
+  --clipboard-left-cut: linear-gradient(0deg, var(--clipboard-cut-color), 50%, transparent 50%);
+  --clipboard-right-cut: linear-gradient(0deg, var(--clipboard-cut-color), 50%, transparent 50%);
+
+  --clipboard-top-copy: linear-gradient(90deg, var(--clipboard-copy-color), 50%, transparent 50%);
+  --clipboard-bottom-copy: linear-gradient(90deg, var(--clipboard-copy-color), 50%, transparent 50%);
+  --clipboard-left-copy: linear-gradient(0deg, var(--clipboard-copy-color), 50%, transparent 50%);
+  --clipboard-right-copy: linear-gradient(0deg, var(--clipboard-copy-color), 50%, transparent 50%);
+  --clipboard-none: none;
+
+  --selected-cell-bg-color: rgba(16, 190, 234, 0.2);
+  --extended-cell-bg-color: rgba(16, 234, 129, 0.2);
+  --deleted-cell-bg-color: rgba(234, 16, 16, 0.2);
+  --passive-cell-bg-color: rgba(205, 148, 148, 0.2);
+  --default-pointer-events: none;
+
+  // ----------------------------------------------------------------------
+
+  position: relative;
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+
+  .table-holder {
+    position: relative;
+    // overflow: auto;
+    scrollbar-width: thin;
+    scrollbar-gutter: both-edges;
+    // border-left: 1px solid var(--border-color);
+    border-top: 1px solid var(--border-color);
+    // border-bottom: 1px solid var(--border-color);
+    box-shadow: 0 -1px 0 0 var(--border-color);
+  }
+
+  .table-content {
+    position: relative;
+    display: grid;
+    width: fit-content;
+    height: auto;
+    border-left: 1px solid var(--border-color);
+  }
+
+  .header-holder,
+  .body-holder {
+    display: contents;
+  }
+
+  .table-row {
+    display: contents;
+  }
+
+  .body-holder {
+    &.drag-active {
+      cursor: crosshair;
+    }
+  }
+
+  .drag-active {
+    .inconel-excel-table-table-cell {
+      --default-pointer-events: all;
+    }
+  }
+}

@@ -1,0 +1,105 @@
+.inconel-data-grid {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  border-radius: var(--inconel-radius-sm);
+  color: var(--inconel-color-text);
+  font-family: var(--inconel-font-family);
+}
+
+.inconel-data-grid__container {
+  display: grid;
+  overflow: hidden;
+  border: 1px solid var(--inconel-color-border);
+  border-radius: var(--inconel-radius-sm);
+  background: var(--inconel-color-surface);
+}
+
+.inconel-data-grid--2-col .inconel-data-grid__container {
+  grid-template-columns:
+    var(--inconel-data-grid-label-width, minmax(120px, 0.8fr))
+    2fr;
+}
+
+.inconel-data-grid--4-col .inconel-data-grid__container {
+  grid-template-columns:
+    var(--inconel-data-grid-label-width, minmax(100px, 0.7fr))
+    minmax(140px, 1.3fr)
+    var(--inconel-data-grid-label-width, minmax(100px, 0.7fr))
+    minmax(140px, 1.3fr);
+}
+
+.inconel-data-grid__item {
+  display: contents;
+}
+
+.inconel-data-grid__item[role='button'] {
+  cursor: pointer;
+}
+
+.inconel-data-grid__label,
+.inconel-data-grid__value {
+  display: flex;
+  min-height: 32px;
+  align-items: center;
+  padding: 6px 10px;
+  border-bottom: 1px solid var(--inconel-color-border);
+  font-size: 12px;
+}
+
+.inconel-data-grid__label {
+  border-right: 1px solid var(--inconel-color-border);
+  background: var(--inconel-color-surface-muted);
+  font-weight: 600;
+}
+
+.inconel-data-grid--compact
+  :is(.inconel-data-grid__label, .inconel-data-grid__value) {
+  min-height: 26px;
+  padding: 2px 6px;
+}
+
+.inconel-data-grid--spacious
+  :is(.inconel-data-grid__label, .inconel-data-grid__value) {
+  min-height: 44px;
+  padding: 10px 14px;
+  font-size: 0.938rem;
+}
+
+.inconel-data-grid--striped
+  .inconel-data-grid__item:nth-child(even)
+  .inconel-data-grid__value {
+  background: var(--inconel-color-surface-muted);
+}
+
+.inconel-data-grid--hoverable
+  .inconel-data-grid__item:hover
+  :is(.inconel-data-grid__label, .inconel-data-grid__value) {
+  background: #f2f4ff;
+}
+
+.inconel-data-grid--bordered {
+  box-shadow: 0 0 0 2px var(--inconel-color-primary);
+}
+
+.inconel-data-grid.inconel-is-loading {
+  pointer-events: none;
+  opacity: 0.7;
+}
+
+.inconel-data-grid__loading {
+  position: absolute;
+  display: grid;
+  background: rgb(255 255 255 / 70%);
+  inset: 0;
+  place-items: center;
+}
+
+.inconel-data-grid__loading-spinner {
+  width: 28px;
+  height: 28px;
+  border: 3px solid var(--inconel-color-border);
+  border-top-color: var(--inconel-color-primary);
+  border-radius: 50%;
+  animation: inconel-spin 800ms linear infinite;
+}

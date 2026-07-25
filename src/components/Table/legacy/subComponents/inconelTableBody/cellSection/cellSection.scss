@@ -1,0 +1,51 @@
+@use '../../styles/inconelTableMixins' as tabMix;
+
+@include tabMix.inconeltable-keyframes('inconeltable-cell-update-animation') {
+  0% {
+    opacity: 1;
+    color: inherit;
+    font-weight: bold;
+  }
+  50% {
+    opacity: 0.4;
+    background-color: var(--danger-bg);
+    font-weight: bold;
+  }
+  100% {
+    opacity: 1;
+    color: inherit;
+    font-weight: normal;
+  }
+}
+
+%common-item-border-props {
+  border-right: var(--grid-border);
+  border-bottom: var(--grid-border);
+
+  &.inconeltable-group-border {
+    border-right: var(--grid-group-border);
+  }
+}
+
+.inconeltable-cell-item {
+  position: relative;
+  display: inline-flex;
+  // justify-content: center;
+  // align-items: center;
+  box-sizing: border-box;
+  @extend %common-item-border-props;
+
+  &.inconeltable-rowspan-item {
+    background-color: var(--grid-rowspan-bgcolor);
+    font-weight: bold;
+  }
+
+  &.inconeltable-rowspan-item-start,
+  &.inconeltable-rowspan-item-between {
+    border-bottom: 1px solid transparent;
+  }
+
+  &.inconeltable-cell-item-updated {
+    @include tabMix.inconeltable-animation('inconeltable-cell-update-animation linear 0.5s 3');
+  }
+}

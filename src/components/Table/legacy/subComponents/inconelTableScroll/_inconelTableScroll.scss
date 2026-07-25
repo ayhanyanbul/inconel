@@ -1,0 +1,71 @@
+
+  //position: relative;
+  //box-sizing: border-box;
+
+  div {
+    box-sizing: border-box;
+  }
+
+  .inconeltable-scroll-bg-holder {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+
+    & > div {
+      position: absolute;
+      bottom: 0px;
+      right: 0px;
+      background-color: var(--grid-trackBgColor);
+    }
+  }
+
+  .inconeltable-scroll-track {
+    position: absolute;
+    border-radius: 5px;
+    background-color: var(--grid-trackColor);
+    transition: width 0.3s linear, height 0.3s linear, opacity 0.2s linear;
+    opacity: 0.8;
+  }
+
+  .inconeltable-scroll-expandable {
+    &.inconeltable-scroll-horizontal .inconeltable-scroll-track.inconeltable-scroll-drag {
+      height: 100% !important;
+      opacity: 1;
+    }
+
+    &.inconeltable-scroll-vertical .inconeltable-scroll-track.inconeltable-scroll-drag {
+      width: 100% !important;
+      opacity: 1;
+    }
+
+    &:hover {
+      &.inconeltable-scroll-horizontal .inconeltable-scroll-track {
+        height: 100% !important;
+        opacity: 1;
+      }
+
+      &.inconeltable-scroll-vertical .inconeltable-scroll-track {
+        width: 100% !important;
+        opacity: 1;
+      }
+    }
+  }
+
+  .inconeltable-scroll-horizontal {
+    .inconeltable-scroll-track {
+      height: 0px;
+      bottom: 0px;
+      left: 0px;
+    }
+  }
+
+  .inconeltable-scroll-vertical {
+    .inconeltable-scroll-track {
+      width: 0px;
+      top: 0px;
+      right: 0px;
+    }
+  }

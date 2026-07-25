@@ -1,0 +1,19 @@
+.inconel-excel-table-header-item {
+  position: sticky;
+  display: inline-flex;
+  align-items: center;
+  top: 0;
+  padding: 2px 5px;
+  color: var(--font-color);
+  font-weight: bold;
+  background-color: var(--header-bg-color);
+  box-shadow: var(--border-right), var(--border-bottom);
+  border-bottom: 1px solid var(--border-bold-color);
+  z-index: 1;
+
+  &.pin-left {
+    position: sticky;
+    z-index: 3;
+    left: 0;
+  }
+}

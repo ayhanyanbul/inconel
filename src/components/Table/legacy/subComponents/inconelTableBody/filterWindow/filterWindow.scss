@@ -1,0 +1,188 @@
+@use '../../styles/inconelTableMixins' as tabMix;
+
+  @include tabMix.inconeltable-keyframes('inconeltable-menu-animation') {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+  .inconeltable-filter-window {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    min-width: 196px;
+    z-index: 3;
+    background-color: var(--grid-filtering-bgcolor);
+    border: var(--grid-general-bold-border);
+    border-radius: 5px;
+    box-sizing: content-box;
+    max-width: 400px;
+
+    @include tabMix.inconeltable-animation('inconeltable-menu-animation ease-out 0.4s 1 forwards');
+
+    // === HEADER ========================================================
+    .inconeltable-filter-window-header {
+      position: relative;
+      width: 100%;
+      padding: 10px;
+
+      .inconeltable-filter-window-header-input-holder {
+        position: relative;
+        display: flex;
+        align-items: center;
+        width: 100%;
+        height: 25px;
+
+        input {
+          width: 100%;
+          height: 25px;
+          padding: 1px 20px 1px 5px;
+          border-radius: 5px;
+          border: var(--grid-general-bold-border);
+          background-color: var(--grid-filtering-inputtext-bgcolor);
+          color: var(--grid-text-color);
+          transition: border 0.4s ease-out;
+
+          &:focus {
+            border-color: rgba(0, 123, 255, 0.6);
+            outline: none;
+          }
+        }
+
+        .inconeltable-filter-window-header-input-clear {
+          position: absolute;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          right: 0px;
+          width: 25px;
+          height: 25px;
+
+          opacity: 0.4;
+          cursor: pointer;
+
+          svg {
+            fill: var(--grid-clear-icon-color);
+            width: 10px;
+            height: 10px;
+          }
+
+          &:hover {
+            opacity: 0.6;
+          }
+        }
+      }
+
+      .inconeltable-filter-window-header-select-all {
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+        width: auto;
+        height: 20px;
+        margin-top: 8px;
+        font-weight: bold;
+        font-size: 12px;
+        user-select: none;
+        cursor: pointer;
+
+        &:hover {
+          opacity: 0.7;
+        }
+      }
+    }
+    // === BODY ========================================================
+    .inconeltable-filter-window-body {
+      position: relative;
+      width: 100%;
+      border-top: var(--grid-border);
+      border-bottom: var(--grid-border);
+      padding: 10px;
+
+      .inconeltable-filter-window-body-list {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        overflow-x: hidden;
+        overflow-y: auto;
+        user-select: none;
+
+        .inconeltable-filter-window-body-list-nodata {
+          font-size: 11px;
+        }
+
+        .inconeltable-filter-window-body-list-item {
+          position: relative;
+          width: 100%;
+          height: 25px;
+          font-size: 12px;
+
+          &:not(:last-child) {
+            margin-bottom: 1px;
+          }
+          .emptyItem {
+            opacity: 0.5;
+          }
+          label {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            width: auto;
+            max-width: 100%;
+            height: 100%;
+
+            span {
+              margin-left: 5px;
+              overflow: hidden;
+              text-overflow: ellipsis;
+              white-space: nowrap;
+            }
+          }
+        }
+      }
+    }
+
+    // === FOOTER ========================================================
+    .inconeltable-filter-window-footer {
+      position: relative;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      & > div {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 25px;
+        font-size: 12px;
+        padding: 0px 10px;
+      }
+
+      .inconeltable-filter-window-footer-count {
+        position: relative;
+        justify-content: flex-end;
+        font-weight: bold;
+      }
+
+      .inconeltable-filter-window-footer-button {
+        position: relative;
+        width: calc(100% - 20px);
+        height: 20px;
+        border: var(--grid-border);
+        border-radius: 5px;
+        user-select: none;
+        cursor: pointer;
+        transition: background-color 0.2s ease-out, color 0.2s ease-out;
+
+        &:hover {
+          background-color: #0176ff;
+          color: #ffffff;
+        }
+      }
+    }
+  }

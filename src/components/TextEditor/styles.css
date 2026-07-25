@@ -1,0 +1,5 @@
+.inconel-text-editor {
+  overflow: hidden;
+  border: 1px solid var(--inconel-color-border);
+  border-radius: var(--inconel-radius-md);
+}

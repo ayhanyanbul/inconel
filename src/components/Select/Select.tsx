@@ -17,11 +17,12 @@ import {
   flip,
   offset,
   shift,
-  size,
+  size as floatingSize,
   useFloating,
 } from '@floating-ui/react'
 import { useVirtualizer } from '@tanstack/react-virtual'
 import { createPortal } from 'react-dom'
+import { useInconelAdapters } from '../../adapters'
 import { classNames as mergeClassNames } from '../shared/classNames'
 import '../shared/field.css'
 import '../shared/field-controls.css'
@@ -55,12 +56,14 @@ export type SelectStyles = Partial<Record<SelectPart, CSSProperties>>
 export interface SelectProps<T extends object> extends FieldFeedbackContentProps {
   id?: string
   name?: string
-  label: string
-  options: T[]
-  value: OptionValue | null
-  onChange: (value: OptionValue | null, option: T | null) => void
-  optionLabel: keyof T | ((option: T) => ReactNode)
-  optionValue: keyof T | ((option: T) => OptionValue)
+  label?: ReactNode
+  options?: T[]
+  value?: OptionValue | T | null
+  onChange?:
+    | ((value: OptionValue | null, option: T | null) => void)
+    | ((option: T | null) => void)
+  optionLabel?: keyof T | ((option: T) => ReactNode)
+  optionValue?: keyof T | ((option: T) => OptionValue)
   getOptionSearchText?: (option: T) => string
   isOptionDisabled?: (option: T) => boolean
   placeholder?: string
@@ -88,6 +91,26 @@ export interface SelectProps<T extends object> extends FieldFeedbackContentProps
   onInputChange?: (value: string) => void
   onMenuOpen?: () => void
   onMenuClose?: () => void
+  autoFocus?: boolean
+  selectClassName?: string
+  disabled?: boolean
+  isSearchable?: boolean
+  readOnly?: boolean
+  defaultValue?: OptionValue | T | null
+  errorPlace?: 'in' | 'out' | string
+  onBlur?: () => void
+  setFieldValue?: OptionValue | string | null
+  render?: boolean
+  singleValue?: boolean
+  sortByUppercase?: boolean
+  selectClassNamePrefix?: string
+  menuPlacement?: 'auto' | 'bottom' | 'top'
+  maxMenuHeight?: number
+  inputClassName?: string
+  labelClassName?: string
+  size?: string
+  required?: boolean
+  components?: Record<string, unknown>
 }
 
 function SelectInner<T extends object>(
@@ -95,11 +118,11 @@ function SelectInner<T extends object>(
     id,
     name,
     label,
-    options,
+    options = [],
     value,
     onChange,
-    optionLabel,
-    optionValue,
+    optionLabel = 'label' as keyof T,
+    optionValue = 'value' as keyof T,
     getOptionSearchText,
     isOptionDisabled = () => false,
     placeholder,
@@ -129,9 +152,31 @@ function SelectInner<T extends object>(
     onInputChange,
     onMenuOpen,
     onMenuClose,
+    autoFocus,
+    selectClassName,
+    disabled,
+    isSearchable = true,
+    readOnly,
+    defaultValue,
+    errorPlace,
+    onBlur,
+    setFieldValue,
+    render = true,
+    singleValue,
+    sortByUppercase,
+    inputClassName,
+    labelClassName,
+    size,
+    required,
   }: SelectProps<T>,
   forwardedRef: ForwardedRef<SelectHandle>,
 ) {
+  const adapters = useInconelAdapters()
+  const legacyMode =
+    singleValue !== undefined ||
+    selectClassName !== undefined ||
+    errorPlace !== undefined
+  const controlledValue = value ?? setFieldValue ?? defaultValue ?? null
   const generatedId = useId()
   const inputId = id ?? `inconel-select-${generatedId.replace(/:/g, '')}`
   const labelId = `${inputId}-label`
@@ -177,6 +222,31 @@ function SelectInner<T extends object>(
     ? (asyncOptions ?? options)
     : options
   const loading = isLoading || isAsyncLoading
+  const componentDisabled = isDisabled || Boolean(disabled)
+  const componentReadOnly = isReadOnly || Boolean(readOnly)
+  const componentRequired = isRequired || Boolean(required)
+  const resolvedPlaceholder =
+    (errorPlace === 'in' && errorMessage
+      ? String(errorMessage)
+      : placeholder) ??
+    String(adapters.translate?.('select', 'Seçim yapın...') ?? 'Seçim yapın...')
+  const resolvedNoOptionsMessage =
+    noOptionsMessage ??
+    adapters.translate?.('noData', 'Sonuç bulunamadı.') ??
+    'Sonuç bulunamadı.'
+  const resolvedLoadingMessage =
+    loadingMessage ??
+    adapters.translate?.('loading', 'Yükleniyor...') ??
+    'Yükleniyor...'
+  const resolvedClearLabel =
+    clearButtonLabel ??
+    String(adapters.translate?.('clearSelection', 'Seçimi temizle') ?? 'Seçimi temizle')
+  const resolvedOpenLabel =
+    openMenuButtonLabel ??
+    String(adapters.translate?.('openOptions', 'Seçenekleri aç') ?? 'Seçenekleri aç')
+  const resolvedCloseLabel =
+    closeMenuButtonLabel ??
+    String(adapters.translate?.('closeOptions', 'Seçenekleri kapat') ?? 'Seçenekleri kapat')
 
   const getLabel = useCallback(
     (option: T): ReactNode =>
@@ -216,6 +286,28 @@ function SelectInner<T extends object>(
     [optionValue],
   )
 
+  const normalizedValue =
+    controlledValue && typeof controlledValue === 'object'
+      ? getValue(controlledValue as T)
+      : (controlledValue as OptionValue | null)
+
+  const emitChange = useCallback(
+    (nextValue: OptionValue | null, option: T | null) => {
+      if (!onChange) return
+      if (legacyMode) {
+        ;(onChange as (selected: T | null) => void)(option)
+      } else {
+        ;(
+          onChange as (
+            value: OptionValue | null,
+            selected: T | null,
+          ) => void
+        )(nextValue, option)
+      }
+    },
+    [legacyMode, onChange],
+  )
+
   const duplicateValues = useMemo(() => {
     const seen = new Set<OptionValue>()
     return availableOptions
@@ -237,7 +329,7 @@ function SelectInner<T extends object>(
   }, [duplicateValues, label])
 
   const selectedOption = [...options, ...availableOptions].find(
-    (option) => getValue(option) === value,
+    (option) => getValue(option) === normalizedValue,
   )
   const selectedLabel = selectedOption ? getSearchLabel(selectedOption) : ''
 
@@ -258,7 +350,7 @@ function SelectInner<T extends object>(
       offset(8),
       flip({ padding: 12 }),
       shift({ padding: 12 }),
-      size({
+      floatingSize({
         padding: 12,
         apply({ availableHeight, rects, elements }) {
           Object.assign(elements.floating.style, {
@@ -288,19 +380,19 @@ function SelectInner<T extends object>(
   }, [onInputChange, onMenuClose])
 
   const openMenu = () => {
-    if (isDisabled || isReadOnly) return
+    if (componentDisabled || componentReadOnly) return
     if (!isOpen) onMenuOpen?.()
     setIsOpen(true)
   }
 
   const clearSelection = useCallback(() => {
-    if (isDisabled || isReadOnly) return
-    onChange(null, null)
+    if (componentDisabled || componentReadOnly) return
+    emitChange(null, null)
     setInputValue('')
     setActiveIndex(0)
     onInputChange?.('')
     inputRef.current?.focus()
-  }, [isDisabled, isReadOnly, onChange, onInputChange])
+  }, [componentDisabled, componentReadOnly, emitChange, onInputChange])
 
   useImperativeHandle(
     forwardedRef,
@@ -345,7 +437,7 @@ function SelectInner<T extends object>(
 
   const selectOption = (option: T) => {
     if (isOptionDisabled(option)) return
-    onChange(getValue(option), option)
+    emitChange(getValue(option), option)
     closeMenu()
     inputRef.current?.focus()
   }
@@ -374,7 +466,7 @@ function SelectInner<T extends object>(
     if (
       event.key === 'Backspace' &&
       !inputValue &&
-      value !== null &&
+      normalizedValue !== null &&
       isClearable
     ) {
       event.preventDefault()
@@ -416,14 +508,14 @@ function SelectInner<T extends object>(
         id={`${inputId}-option-${index}`}
         key={optionId}
         role="option"
-        aria-selected={optionId === value}
+        aria-selected={optionId === normalizedValue}
         aria-disabled={disabled}
         aria-posinset={index + 1}
         aria-setsize={filteredOptions.length}
         className={mergeClassNames(
           'inconel-select-option',
           index === activeIndex && 'inconel-is-active',
-          optionId === value && 'inconel-is-selected',
+          optionId === normalizedValue && 'inconel-is-selected',
           disabled && 'inconel-is-disabled',
           classNames.option,
         )}
@@ -433,7 +525,7 @@ function SelectInner<T extends object>(
         onClick={() => selectOption(option)}
       >
         <span>{getLabel(option)}</span>
-        {optionId === value && <span aria-hidden="true">✓</span>}
+        {optionId === normalizedValue && <span aria-hidden="true">✓</span>}
       </div>
     )
   }
@@ -445,7 +537,7 @@ function SelectInner<T extends object>(
       style={styles.message}
     >
       <span className="inconel-select-spinner" aria-hidden="true" />
-      {loadingMessage}
+      {resolvedLoadingMessage}
     </div>
   ) : hasAsyncError ? (
     <div
@@ -460,7 +552,7 @@ function SelectInner<T extends object>(
       className={mergeClassNames('inconel-select-message', classNames.message)}
       style={styles.message}
     >
-      {noOptionsMessage}
+      {resolvedNoOptionsMessage}
     </div>
   ) : shouldVirtualize ? (
     <div
@@ -505,27 +597,34 @@ function SelectInner<T extends object>(
 
   const describedBy = errorMessage ? messageId : hint ? hintId : undefined
 
+  if (!render) return null
+
   return (
     <div
       ref={rootRef}
-      className={mergeClassNames('inconel-select-field', className, classNames.root)}
+      className={mergeClassNames(
+        'inconel-select-field',
+        size && `inconel-select-field--${size}`,
+        className,
+        classNames.root,
+      )}
       style={styles.root}
     >
       <label
         id={labelId}
         htmlFor={inputId}
-        className={classNames.label}
+        className={mergeClassNames(classNames.label, labelClassName)}
         style={styles.label}
       >
         {label}
-        {isRequired && <span aria-hidden="true"> *</span>}
+        {componentRequired && <span aria-hidden="true"> *</span>}
       </label>
       <div
         ref={refs.setReference}
         className={mergeClassNames(
           'inconel-select-control',
           isOpen && 'inconel-is-open',
-          isDisabled && 'inconel-is-disabled',
+          componentDisabled && 'inconel-is-disabled',
           Boolean(errorMessage) && 'inconel-has-error',
           classNames.control,
         )}
@@ -547,18 +646,24 @@ function SelectInner<T extends object>(
           aria-invalid={Boolean(errorMessage)}
           aria-required={isRequired}
           aria-busy={loading}
-          required={isRequired}
-          disabled={isDisabled}
-          readOnly={isReadOnly}
+          required={componentRequired}
+          disabled={componentDisabled}
+          readOnly={componentReadOnly || !isSearchable}
+          autoFocus={autoFocus}
           autoComplete="off"
-          placeholder={placeholder}
+          placeholder={resolvedPlaceholder}
           value={inputValue || selectedLabel}
-          className={classNames.input}
+          className={mergeClassNames(classNames.input, inputClassName, selectClassName)}
           style={styles.input}
           onChange={(event) => {
-            setInputValue(event.target.value)
+            const nextInput = sortByUppercase
+              ? event.target.value.toLocaleUpperCase(
+                  adapters.locale ?? 'tr-TR',
+                )
+              : event.target.value
+            setInputValue(nextInput)
             setActiveIndex(0)
-            onInputChange?.(event.target.value)
+            onInputChange?.(nextInput)
             openMenu()
           }}
           onClick={openMenu}
@@ -566,15 +671,16 @@ function SelectInner<T extends object>(
             openMenu()
             if (selectedOption && !inputValue) event.currentTarget.select()
           }}
+          onBlur={onBlur}
           onKeyDown={handleKeyDown}
         />
         {loading && <span className="inconel-select-spinner" aria-hidden="true" />}
-        {isClearable && value !== null && !isDisabled && !isReadOnly && clearButtonLabel && (
+        {isClearable && normalizedValue !== null && !componentDisabled && !componentReadOnly && (
           <button
             type="button"
             className={mergeClassNames('inconel-select-clear', classNames.clearButton)}
             style={styles.clearButton}
-            aria-label={clearButtonLabel}
+            aria-label={resolvedClearLabel}
             onClick={clearSelection}
           >
             ×
@@ -584,9 +690,9 @@ function SelectInner<T extends object>(
           type="button"
           className={mergeClassNames('inconel-select-toggle', classNames.toggleButton)}
           style={styles.toggleButton}
-          aria-label={isOpen ? closeMenuButtonLabel : openMenuButtonLabel}
+          aria-label={isOpen ? resolvedCloseLabel : resolvedOpenLabel}
           aria-expanded={isOpen}
-          disabled={isDisabled}
+          disabled={componentDisabled}
           tabIndex={-1}
           onClick={() => (isOpen ? closeMenu() : openMenu())}
         >
@@ -612,13 +718,13 @@ function SelectInner<T extends object>(
         <input
           type="hidden"
           name={name}
-          value={value ?? ''}
-          required={isRequired}
+          value={normalizedValue ?? ''}
+          required={componentRequired}
         />
       )}
       <FieldFeedback
         hint={hint}
-        errorMessage={errorMessage}
+        errorMessage={errorPlace === 'in' ? undefined : errorMessage}
         hintId={hintId}
         errorId={messageId}
       />

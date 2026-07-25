@@ -1,0 +1,18 @@
+@use '../../styles/inconelTableMixins' as tabMix;
+
+.inconeltable-custom-context-menu {
+
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 10;
+  @include tabMix.inconeltable-animation('inconeltable-custom-context-menu-animation ease-out 0.3s 1 forwards');
+  @include tabMix.inconeltable-keyframes('inconeltable-custom-context-menu-animation') {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+}

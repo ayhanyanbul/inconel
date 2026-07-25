@@ -11,7 +11,9 @@ export interface TabsItem {
 }
 
 export interface TabsProps {
-  items: TabsItem[]
+  items?: TabsItem[]
+  tabData?: Array<{ label?: ReactNode; content?: ReactNode }>
+  initialTab?: string | number | null
   value?: string
   defaultValue?: string
   onChange?: (id: string) => void
@@ -20,21 +22,35 @@ export interface TabsProps {
 
 export function Tabs({
   items,
+  tabData,
+  initialTab,
   value,
   defaultValue,
   onChange,
   className,
 }: TabsProps) {
-  const [internalValue, setInternalValue] = useState(
-    defaultValue ?? items[0]?.id,
-  )
+  const resolvedItems =
+    items ??
+    tabData?.map((item, index) => ({
+      id: String(index),
+      label: item.label,
+      content: item.content,
+      disabled: false,
+    })) ??
+    []
+  const initialValue =
+    defaultValue ??
+    (initialTab !== null && initialTab !== undefined
+      ? String(initialTab)
+      : resolvedItems[0]?.id)
+  const [internalValue, setInternalValue] = useState(initialValue)
   const activeValue = value ?? internalValue
-  const active = items.find((item) => item.id === activeValue)
+  const active = resolvedItems.find((item) => item.id === activeValue)
 
   return (
     <div className={classNames('inconel-tabs', className)}>
       <div className="inconel-tabs__list" role="tablist">
-        {items.map((item) => (
+        {resolvedItems.map((item) => (
           <button
             key={item.id}
             type="button"

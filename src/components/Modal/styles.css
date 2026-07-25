@@ -38,6 +38,19 @@
   font-weight: 700;
 }
 
+.inconel-modal__header-actions {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.inconel-modal__maximize {
+  border: 0;
+  color: var(--inconel-color-text-muted);
+  background: transparent;
+  cursor: pointer;
+}
+
 .inconel-modal__content {
   overflow: auto;
   padding: 20px;
@@ -49,4 +62,30 @@
   background: transparent;
   font-size: 1.5rem;
   cursor: pointer;
+}
+
+.inconel-modal--sm {
+  max-width: 420px;
+}
+
+.inconel-modal--lg {
+  max-width: 860px;
+}
+
+.inconel-modal--xl {
+  max-width: 1140px;
+}
+
+.inconel-modal.inconel-is-maximized {
+  width: calc(100vw - 32px);
+  max-width: none;
+  height: calc(100vh - 32px);
+}
+
+.inconel-modal.inconel-is-full-size {
+  width: 100vw;
+  max-width: none;
+  height: 100vh;
+  max-height: none;
+  border-radius: 0;
 }

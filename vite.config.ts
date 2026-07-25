@@ -7,6 +7,16 @@ export default defineConfig(({ mode }) => {
   const isPlayground = mode === 'playground'
 
   return {
+    resolve: {
+      alias: {
+        assets: resolve(__dirname, 'src/assets'),
+        components: resolve(__dirname, 'src/components'),
+        hooks: resolve(__dirname, 'src/hooks'),
+        'react-intl': resolve(__dirname, 'src/compat/reactIntl.ts'),
+        store: resolve(__dirname, 'src/store'),
+        utils: resolve(__dirname, 'src/utils'),
+      },
+    },
     plugins: [
       react(),
       ...(isPlayground

@@ -1,0 +1,44 @@
+.inconel-customizable-switch {
+  position: relative;
+  width: 52px;
+  height: 28px;
+  border-radius: 999px;
+  background: var(--inconel-color-border);
+  cursor: pointer;
+  transition: background 160ms ease;
+}
+
+.inconel-customizable-switch.inconel-is-checked {
+  background: var(--inconel-color-primary);
+}
+
+.inconel-customizable-switch.inconel-is-disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+.inconel-customizable-switch__background {
+  position: absolute;
+  display: grid;
+  inset: 0;
+  place-items: center;
+}
+
+.inconel-customizable-switch__marker {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  display: grid;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 1px 3px rgb(16 24 40 / 30%);
+  place-items: center;
+  transition: transform 160ms ease;
+}
+
+.inconel-customizable-switch.inconel-is-checked
+  .inconel-customizable-switch__marker {
+  transform: translateX(24px);
+}

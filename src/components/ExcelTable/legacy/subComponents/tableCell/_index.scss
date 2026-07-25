@@ -1,0 +1,106 @@
+.inconel-excel-table-table-cell {
+  --clipboard-value: none;
+
+  @keyframes clipboard-animation {
+    0% {
+      background-position:
+        0 0,
+        100% 100%,
+        0 100%,
+        100% 0;
+    }
+    100% {
+      background-position:
+        100% 0,
+        0 100%,
+        0 0,
+        100% 100%;
+    }
+  }
+
+  @mixin highlighter($color) {
+    &::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      inset: 0;
+      background-color: #{$color};
+      pointer-events: var(--default-pointer-events);
+    }
+  }
+
+  position: relative;
+  color: var(--font-color);
+  overflow: hidden;
+  background-color: var(--body-bg-color);
+
+  &.pin-left {
+    position: sticky;
+    z-index: 2;
+    left: 0;
+  }
+
+  .cell-content {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    padding: 2px 5px;
+    color: var(--font-color);
+    white-space: nowrap;
+  }
+
+  &.has-clipboard::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    inset: 0;
+    // background: var(--clipboard-top), var(--clipboard-bottom), var(--clipboard-left), var(--clipboard-right);
+    background: var(--clipboard-value);
+    background-repeat: repeat-x, repeat-x, repeat-y, repeat-y;
+    background-size:
+      var(--clipboard-thickness) var(--clipboard-size),
+      var(--clipboard-thickness) var(--clipboard-size),
+      var(--clipboard-size) var(--clipboard-thickness),
+      var(--clipboard-size) var(--clipboard-thickness);
+    background-position:
+      0 0,
+      100% 100%,
+      0 100%,
+      100% 0;
+    animation: clipboard-animation var(--clipboard-duration) infinite linear;
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  &.cell-selected {
+    @include highlighter(var(--selected-cell-bg-color));
+  }
+
+  &.cell-will-extend {
+    @include highlighter(var(--extended-cell-bg-color));
+  }
+
+  &.cell-will-deleted {
+    @include highlighter(var(--deleted-cell-bg-color));
+  }
+
+  &.cell-will-extend.cell-copy-passive,
+  &.cell-will-deleted.cell-copy-passive {
+    @include highlighter(var(--passive-cell-bg-color));
+  }
+
+  .cell-drag-Button {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 6px;
+    height: 6px;
+    background-color: rgba(16, 190, 234, 1);
+    cursor: crosshair;
+    // z-index: 1;
+  }
+}

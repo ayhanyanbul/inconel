@@ -1,0 +1,41 @@
+.inconeltable-settings-panel {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+
+  .inconeltable-settings-panel-item {
+    position: relative;
+    width: 100%;
+    height: 42px;
+
+    .inconeltable-settings-panel-item-first-row {
+      position: relative;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      height: 50%;
+      font-size: 12px;
+    }
+
+    .inconeltable-settings-panel-item-second-row {
+      position: relative;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      width: 100%;
+      height: 50%;
+      font-weight: bold;
+      font-size: 11px;
+
+      &.inconeltable-enabled {
+        color: var(--grid-status-enabled-color);
+      }
+
+      &.inconeltable-disabled {
+        color: var(--grid-status-disabled-color);
+      }
+    }
+  }
+}
