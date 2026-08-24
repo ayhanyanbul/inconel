@@ -1,1 +1,0 @@
-{"version":3,"file":"LoaderMini.d.ts","sourceRoot":"","sources":["../../../src/components/LoaderMini/LoaderMini.tsx"],"names":[],"mappings":"AAAA,OAAO,KAAK,EAAE,cAAc,EAAE,MAAM,OAAO,CAAA;AAG3C,OAAO,cAAc,CAAA;AAErB,MAAM,WAAW,eAAgB,SAAQ,cAAc,CAAC,cAAc,CAAC;IACrE,IAAI,CAAC,EAAE,OAAO,CAAA;CACf;AAED,wBAAgB,UAAU,CAAC,EACzB,IAAY,EACZ,SAAS,EACT,GAAG,KAAK,EACT,EAAE,eAAe,sCAYjB"}

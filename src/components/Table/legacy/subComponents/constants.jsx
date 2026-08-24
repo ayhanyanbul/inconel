@@ -1,6 +1,5 @@
 export const INCONELTABLE_THEME_LIGHT = 'default-light';
-export const INCONELTABLE_THEME_DARK = 'default-dark';
-export const INCONELTABLE_THEME_EPIAS_BLUE = 'epias-gip';
+export const INCONELTABLE_THEME_DARK = 'dark';
 export const INCONELTABLE_LANG_TR = 'tr';
 export const INCONELTABLE_LANG_EN = 'en';
 export const INCONELTABLE_SORT_ASC = 'asc';

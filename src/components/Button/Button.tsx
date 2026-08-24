@@ -6,6 +6,8 @@ import {
 } from 'react'
 
 import { classNames } from '../shared/classNames'
+import '../shared/sizes.css'
+import type { ControlSize } from '../shared/types'
 import { Svg } from '../Svg'
 import {
   BUTTON_TYPE_CLASS_NAMES,
@@ -29,7 +31,8 @@ export interface ButtonProps
   onChange?: ButtonHTMLAttributes<HTMLButtonElement>['onChange']
   loading?: boolean
   fullWidth?: boolean
-  variant?: 'primary' | 'secondary' | 'danger' | 'ghost'
+  variant?: 'primary' | 'secondary' | 'danger' | 'ghost' | 'warning' | 'dark'
+  size?: ControlSize
 }
 
 export function Button({
@@ -50,6 +53,7 @@ export function Button({
   disabled,
   className,
   children,
+  size = 'md',
   ...props
 }: ButtonProps) {
   const resolvedType = buttonType ?? variant
@@ -96,6 +100,7 @@ export function Button({
       onClick={disabled || loading ? undefined : debouncedClick}
       className={classNames(
         'inconel-button',
+        `inconel-size-${size}`,
         BUTTON_TYPE_CLASS_NAMES[resolvedType],
         fullWidth && 'inconel-button--full-width',
         loading && 'inconel-is-loading',

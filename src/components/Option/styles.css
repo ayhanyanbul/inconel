@@ -10,7 +10,7 @@
 
 .inconel-option.inconel-is-selected {
   color: var(--inconel-color-primary-hover);
-  background: #f2f4ff;
+  background: var(--inconel-color-primary-subtle);
 }
 
 .inconel-option.inconel-is-disabled {

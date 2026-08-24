@@ -2,3 +2,8 @@
 node_modules/
 .npm-cache/
 .DS_Store
+dist/
+playground-dist/
+
+*storybook.log
+storybook-static

@@ -69,8 +69,7 @@ import {
   INCONELTABLE_ROW_ROWSPAN,
   INCONELTABLE_ROW_LOADMORE,
   INCONELTABLE_ROW_VALUES,
-  INCONELTABLE_FILTER_EMPTY_VALUE,
-  INCONELTABLE_THEME_EPIAS_BLUE
+  INCONELTABLE_FILTER_EMPTY_VALUE
 } from './subComponents/constants';
 
 import {
@@ -1676,7 +1675,7 @@ InconelTable.propTypes = {
   fontFamily: PropTypes.string,
   fontSize: PropTypes.number,
   lang: PropTypes.oneOf([INCONELTABLE_LANG_TR, INCONELTABLE_LANG_EN]),
-  theme: PropTypes.oneOf([INCONELTABLE_THEME_LIGHT, INCONELTABLE_THEME_DARK, INCONELTABLE_THEME_EPIAS_BLUE]),
+  theme: PropTypes.oneOf([INCONELTABLE_THEME_LIGHT, INCONELTABLE_THEME_DARK]),
   render: PropTypes.bool,
   customContextAction: PropTypes.func,
   customContextEnabled: PropTypes.bool

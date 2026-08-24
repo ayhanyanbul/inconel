@@ -67,7 +67,11 @@ export function Switch({
         className,
       )}
     >
-      {label && <span className="inconel-switch__label">{label}</span>}
+      {label && (
+        <span className="inconel-switch__label" id={`${inputId}-label`}>
+          {label}
+        </span>
+      )}
       <input
         type="checkbox"
         id={inputId}
@@ -75,6 +79,7 @@ export function Switch({
         checked={resolvedChecked}
         defaultChecked={resolvedChecked === undefined ? defaultChecked : undefined}
         disabled={disabled}
+        aria-labelledby={label ? `${inputId}-label` : undefined}
         onChange={(event) => {
           onChange?.(event)
           onCheckedChange?.(event.target.checked, event)

@@ -28,10 +28,14 @@
 }
 
 .inconel-input-readonly {
-  min-height: 46px;
-  padding: 12px 14px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  height: var(--inconel-control-height, 40px);
+  padding: 0 var(--inconel-control-padding-x, 14px);
   border: 1px solid var(--inconel-color-border);
   border-radius: var(--inconel-radius-md);
   background: var(--inconel-color-surface-muted);
+  font-size: var(--inconel-control-font-size, inherit);
   font-weight: 600;
 }

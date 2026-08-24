@@ -192,6 +192,27 @@ import { Svg } from 'inconel'
 `render={false}` verildiğinde veya `src` belirtilmediğinde bileşen render
 edilmez. Ana wrapper her zaman `inconel-svg` sınıfını taşır.
 
+## Sizes
+
+`Button`, `Input` (ve `TextInput`/`InputText`/`CurrencyInput`), `Select`,
+`Textarea` ve `DatePicker` ortak bir `size` prop'unu destekler:
+
+```tsx
+<Button size="lg">Kaydet</Button>
+<Input size="sm" label="E-posta" />
+```
+
+`size`, `'xs' | 'sm' | 'md' | 'lg' | 'xl'` değerlerini alır (varsayılan
+`'md'`) ve tüm bileşenlerde aynı yükseklik/font-size ölçeğini uygular:
+
+| size | height | font-size |
+| ---- | ------ | --------- |
+| xs   | 28px   | 12px      |
+| sm   | 32px   | 13px      |
+| md   | 40px   | 14px      |
+| lg   | 48px   | 16px      |
+| xl   | 56px   | 18px      |
+
 ## Theming
 
 Override Inconel design tokens in your application:
@@ -206,6 +227,29 @@ Override Inconel design tokens in your application:
 ```
 
 Select additionally supports part-based `classNames` and `styles` props.
+
+### Dark mode
+
+Inconel ships a dark palette out of the box, applied automatically when the
+OS/browser prefers dark (`prefers-color-scheme: dark`). Applications can also
+switch themes manually, regardless of OS preference, by setting `data-theme`
+on `<html>` (or any ancestor of the components):
+
+```html
+<html data-theme="dark">
+  <!-- forces dark, even if the OS prefers light -->
+</html>
+```
+
+```html
+<html data-theme="light">
+  <!-- forces light, even if the OS prefers dark -->
+</html>
+```
+
+Omitting `data-theme` falls back to the OS preference. Override individual
+dark-mode tokens the same way as light ones, scoped under your own
+`[data-theme="dark"]` selector.
 
 ## Select ref API
 

@@ -1,7 +1,24 @@
+import { readFileSync } from 'node:fs'
 import { resolve } from 'node:path'
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import dts from 'vite-plugin-dts'
+
+const pkg = JSON.parse(
+  readFileSync(resolve(__dirname, 'package.json'), 'utf-8'),
+) as { dependencies?: Record<string, string> }
+
+const externalDeps = [
+  ...Object.keys(pkg.dependencies ?? {}),
+  'react',
+  'react-dom',
+  'react/jsx-runtime',
+]
+
+const isExternal = (id: string) => {
+  if (id.endsWith('.css')) return false
+  return externalDeps.some((dep) => id === dep || id.startsWith(`${dep}/`))
+}
 
 export default defineConfig(({ mode }) => {
   const isPlayground = mode === 'playground'
@@ -38,18 +55,26 @@ export default defineConfig(({ mode }) => {
             entry: resolve(__dirname, 'src/index.ts'),
             name: 'Inconel',
             formats: ['es', 'cjs'],
-            fileName: (format) =>
-              format === 'es' ? 'index.js' : 'index.cjs',
             cssFileName: 'styles',
           },
           rollupOptions: {
-            external: [
-              '@floating-ui/react',
-              '@tanstack/react-virtual',
-              'react-svg',
-              'react',
-              'react-dom',
-              'react/jsx-runtime',
+            external: isExternal,
+            output: [
+              {
+                format: 'es',
+                dir: 'dist',
+                preserveModules: true,
+                preserveModulesRoot: 'src',
+                entryFileNames: '[name].js',
+              },
+              {
+                format: 'cjs',
+                dir: 'dist/cjs',
+                preserveModules: true,
+                preserveModulesRoot: 'src',
+                entryFileNames: '[name].cjs',
+                exports: 'named',
+              },
             ],
           },
           sourcemap: true,

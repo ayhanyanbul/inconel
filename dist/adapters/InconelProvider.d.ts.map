@@ -1,1 +1,0 @@
-{"version":3,"file":"InconelProvider.d.ts","sourceRoot":"","sources":["../../src/adapters/InconelProvider.tsx"],"names":[],"mappings":"AAAA,OAAO,EAEL,KAAK,SAAS,EACf,MAAM,OAAO,CAAA;AACd,OAAO,EAGL,KAAK,eAAe,EACrB,MAAM,WAAW,CAAA;AAElB,MAAM,WAAW,oBAAoB;IACnC,QAAQ,CAAC,EAAE,eAAe,CAAA;IAC1B,QAAQ,EAAE,SAAS,CAAA;CACpB;AAED,wBAAgB,eAAe,CAAC,EAC9B,QAAQ,EACR,QAAQ,GACT,EAAE,oBAAoB,+BAetB"}

@@ -17,7 +17,7 @@
 }
 
 .inconel-select-clear:hover {
-  color: #344054;
+  color: var(--inconel-color-text);
 }
 
 .inconel-select-toggle svg {
@@ -61,7 +61,7 @@
 }
 
 .inconel-select-option.inconel-is-active {
-  background: #f2f4ff;
+  background: var(--inconel-color-primary-subtle);
 }
 
 .inconel-select-option.inconel-is-selected {

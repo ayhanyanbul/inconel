@@ -43,7 +43,17 @@
 }
 
 .inconel-checkbox input:checked + .inconel-checkbox__control {
-  border: 5px solid var(--inconel-color-primary);
+  border-color: var(--inconel-color-primary);
+  background: var(--inconel-color-primary);
+}
+
+.inconel-checkbox input:checked + .inconel-checkbox__control::after {
+  width: 5px;
+  height: 9px;
+  border: solid #fff;
+  border-width: 0 2px 2px 0;
+  content: '';
+  transform: translateY(-1px) rotate(45deg);
 }
 
 .inconel-checkbox input:focus-visible + .inconel-checkbox__control {

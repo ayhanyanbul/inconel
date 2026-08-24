@@ -13,7 +13,7 @@
 .inconel-select-field > label {
   display: block;
   margin-bottom: 8px;
-  color: #344054;
+  color: var(--inconel-color-text);
   font-size: 0.9rem;
   font-weight: 600;
 }

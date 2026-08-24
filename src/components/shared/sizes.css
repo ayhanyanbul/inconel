@@ -1,0 +1,35 @@
+/* Shared size scale for form controls and buttons.
+   Each component maps its own selectors to these tokens via a
+   `.inconel-size-<xs|sm|md|lg|xl>` class rather than redefining the
+   scale itself, so the five sizes stay numerically consistent across
+   Button, Input, Select, Textarea and DatePicker. */
+
+.inconel-size-xs {
+  --inconel-control-height: 28px;
+  --inconel-control-font-size: 0.75rem;
+  --inconel-control-padding-x: 8px;
+}
+
+.inconel-size-sm {
+  --inconel-control-height: 32px;
+  --inconel-control-font-size: 0.8125rem;
+  --inconel-control-padding-x: 10px;
+}
+
+.inconel-size-md {
+  --inconel-control-height: 40px;
+  --inconel-control-font-size: 0.875rem;
+  --inconel-control-padding-x: 12px;
+}
+
+.inconel-size-lg {
+  --inconel-control-height: 48px;
+  --inconel-control-font-size: 1rem;
+  --inconel-control-padding-x: 16px;
+}
+
+.inconel-size-xl {
+  --inconel-control-height: 56px;
+  --inconel-control-font-size: 1.125rem;
+  --inconel-control-padding-x: 20px;
+}

@@ -8,6 +8,8 @@ import FieldFeedback from '../FieldFeedback/FieldFeedback'
 import type { FieldFeedbackContentProps } from '../FieldFeedback/FieldFeedback'
 import '../shared/field.css'
 import '../shared/field-controls.css'
+import '../shared/sizes.css'
+import type { ControlSize } from '../shared/types'
 import './styles.css'
 
 export interface TextareaProps
@@ -16,6 +18,7 @@ export interface TextareaProps
   label?: string
   fullWidth?: boolean
   resize?: 'none' | 'vertical' | 'horizontal' | 'both'
+  size?: ControlSize
 }
 
 const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
@@ -27,6 +30,7 @@ const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
       errorMessage,
       fullWidth = false,
       resize = 'vertical',
+      size = 'md',
       className,
       required,
       disabled,
@@ -54,6 +58,7 @@ const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
       <div
         className={[
           'inconel-field',
+          `inconel-size-${size}`,
           fullWidth ? 'inconel-field--full-width' : '',
           className ?? '',
         ].join(' ')}

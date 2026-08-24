@@ -1,7 +1,45 @@
 :root {
   --inconel-font-family: Inter, ui-sans-serif, system-ui, -apple-system, sans-serif;
+
   --inconel-color-primary: #6366f1;
   --inconel-color-primary-hover: #4f46e5;
+  --inconel-color-primary-subtle: #eef2ff;
+  --inconel-primary-text-color: #ffffff;
+  --inconel-primary-text-hover-color: #ffffff;
+  --inconel-primary-border-color: #6366f1;
+
+  --inconel-secondary-bg-color: #c3c3cc;
+  --inconel-secondary-bg-hover-color: #d5d4df;
+  --inconel-secondary-text-color: #535457;
+  --inconel-secondary-text-hover-color: #6d6e72;
+  --inconel-secondary-border-color: #9c9da1;
+
+  --inconel-danger-bg-color: var(--inconel-color-danger);
+  --inconel-danger-bg-hover-color: #b42318;
+  --inconel-danger-text-color: #ffffff;
+  --inconel-danger-text-hover-color: #ffffff;
+  --inconel-danger-border-color: var(--inconel-color-danger);
+
+  --inconel-warning-bg-color: #fdb022;
+  --inconel-warning-bg-hover-color: #f79009;
+  --inconel-warning-text-color: #101828;
+  --inconel-warning-text-hover-color: #101828;
+  --inconel-warning-border-color: #fdb022;
+
+  --inconel-success-bg-color: #12b76a;
+  --inconel-success-bg-hover-color: #039855;
+  --inconel-success-text-color: #ffffff;
+  --inconel-success-text-hover-color: #ffffff;
+  --inconel-success-border-color: #12b76a;
+
+  --inconel-dark-bg-color: #344054;
+  --inconel-dark-bg-hover-color: #1d2939;
+  --inconel-dark-text-color: #ffffff;
+  --inconel-dark-text-hover-color: #ffffff;
+  --inconel-dark-border-color: #344054;
+
+  --inconel-svg-color: #ffffff;
+
   --inconel-color-text: #101828;
   --inconel-color-text-muted: #667085;
   --inconel-color-placeholder: #98a2b3;
@@ -15,6 +53,101 @@
   --inconel-shadow-focus: 0 0 0 4px rgb(99 102 241 / 12%);
   --inconel-shadow-menu: 0 16px 32px rgb(16 24 40 / 14%);
 }
+
+/* Automatic dark mode: applies when the OS/browser prefers dark and the
+   application hasn't explicitly forced light via data-theme="light". */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    --inconel-color-primary: #818cf8;
+    --inconel-color-primary-hover: #a5b4fc;
+    --inconel-color-primary-subtle: #312e81;
+    --inconel-primary-text-color: #ffffff;
+    --inconel-primary-text-hover-color: #ffffff;
+    --inconel-primary-border-color: #818cf8;
+
+    --inconel-secondary-bg-color: #333741;
+    --inconel-secondary-bg-hover-color: #3f434e;
+    --inconel-secondary-text-color: #cecfd3;
+    --inconel-secondary-text-hover-color: #ffffff;
+    --inconel-secondary-border-color: #4a4f59;
+
+    --inconel-danger-bg-hover-color: #fda29b;
+    --inconel-danger-text-color: #ffffff;
+    --inconel-danger-text-hover-color: #ffffff;
+
+    --inconel-warning-bg-hover-color: #ffc94d;
+    --inconel-warning-text-color: #101828;
+    --inconel-warning-text-hover-color: #101828;
+
+    --inconel-success-bg-hover-color: #32d583;
+    --inconel-success-text-color: #ffffff;
+    --inconel-success-text-hover-color: #ffffff;
+
+    --inconel-dark-bg-color: #475467;
+    --inconel-dark-bg-hover-color: #667085;
+    --inconel-dark-text-color: #ffffff;
+    --inconel-dark-text-hover-color: #ffffff;
+    --inconel-dark-border-color: #475467;
+
+    --inconel-color-text: #f2f4f7;
+    --inconel-color-text-muted: #94a3b8;
+    --inconel-color-placeholder: #64748b;
+    --inconel-color-border: #344054;
+    --inconel-color-border-subtle: #1f2937;
+    --inconel-color-surface: #101828;
+    --inconel-color-surface-muted: #1d2939;
+    --inconel-color-danger: #f97066;
+    --inconel-shadow-focus: 0 0 0 4px rgb(129 140 248 / 20%);
+    --inconel-shadow-menu: 0 16px 32px rgb(0 0 0 / 40%);
+  }
+}
+
+/* Manual dark mode: applications can force dark regardless of OS
+   preference by setting data-theme="dark" on <html> (or any ancestor). */
+:root[data-theme='dark'] {
+  --inconel-color-primary: #818cf8;
+  --inconel-color-primary-hover: #a5b4fc;
+  --inconel-color-primary-subtle: #312e81;
+  --inconel-primary-text-color: #ffffff;
+  --inconel-primary-text-hover-color: #ffffff;
+  --inconel-primary-border-color: #818cf8;
+
+  --inconel-secondary-bg-color: #333741;
+  --inconel-secondary-bg-hover-color: #3f434e;
+  --inconel-secondary-text-color: #cecfd3;
+  --inconel-secondary-text-hover-color: #ffffff;
+  --inconel-secondary-border-color: #4a4f59;
+
+  --inconel-danger-bg-hover-color: #fda29b;
+  --inconel-danger-text-color: #ffffff;
+  --inconel-danger-text-hover-color: #ffffff;
+
+  --inconel-warning-bg-hover-color: #ffc94d;
+  --inconel-warning-text-color: #101828;
+  --inconel-warning-text-hover-color: #101828;
+
+  --inconel-success-bg-hover-color: #32d583;
+  --inconel-success-text-color: #ffffff;
+  --inconel-success-text-hover-color: #ffffff;
+
+  --inconel-dark-bg-color: #475467;
+  --inconel-dark-bg-hover-color: #667085;
+  --inconel-dark-text-color: #ffffff;
+  --inconel-dark-text-hover-color: #ffffff;
+  --inconel-dark-border-color: #475467;
+
+  --inconel-color-text: #f2f4f7;
+  --inconel-color-text-muted: #94a3b8;
+  --inconel-color-placeholder: #64748b;
+  --inconel-color-border: #344054;
+  --inconel-color-border-subtle: #1f2937;
+  --inconel-color-surface: #101828;
+  --inconel-color-surface-muted: #1d2939;
+  --inconel-color-danger: #f97066;
+  --inconel-shadow-focus: 0 0 0 4px rgb(129 140 248 / 20%);
+  --inconel-shadow-menu: 0 16px 32px rgb(0 0 0 / 40%);
+}
+
 @keyframes inconel-spin {
   to {
     transform: rotate(360deg);

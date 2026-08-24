@@ -2,7 +2,7 @@ import { forwardRef, useEffect, useImperativeHandle, useRef, useState } from 're
 import PropTypes from 'prop-types';
 
 import './_inconelTableScroll.scss';
-import { INCONELTABLE_THEME_DARK, INCONELTABLE_THEME_EPIAS_BLUE, INCONELTABLE_THEME_LIGHT } from '../constants';
+import { INCONELTABLE_THEME_DARK, INCONELTABLE_THEME_LIGHT } from '../constants';
 
 const InconelTableScroll = forwardRef(
   (
@@ -283,7 +283,7 @@ InconelTableScroll.propTypes = {
   expandSize: PropTypes.number,
   wheelSize: PropTypes.number,
   render: PropTypes.bool,
-  theme: PropTypes.oneOf([INCONELTABLE_THEME_LIGHT, INCONELTABLE_THEME_DARK, INCONELTABLE_THEME_EPIAS_BLUE]),
+  theme: PropTypes.oneOf([INCONELTABLE_THEME_LIGHT, INCONELTABLE_THEME_DARK]),
 };
 
 export default InconelTableScroll;

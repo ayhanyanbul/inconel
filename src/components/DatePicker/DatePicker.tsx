@@ -10,6 +10,8 @@ import 'react-datepicker/dist/react-datepicker.css'
 
 import { useInconelAdapters } from '../../adapters'
 import { classNames } from '../shared/classNames'
+import '../shared/sizes.css'
+import type { ControlSize } from '../shared/types'
 import { DotLoader } from '../DotLoader'
 import { Svg } from '../Svg'
 import './styles.css'
@@ -63,7 +65,7 @@ export interface DatePickerProps {
   defaultDate?: boolean
   initialDate?: Date | null
   removeLabel?: boolean
-  size?: string
+  size?: ControlSize
   showWeekNumbers?: boolean
   required?: boolean
   dayClassName?: (date: Date) => string
@@ -157,6 +159,7 @@ export function DatePicker({
     <div
       className={classNames(
         'inconel-date-picker',
+        `inconel-size-${size}`,
         `inconel-date-picker--${size}`,
         disabled && 'inconel-is-disabled',
         className,

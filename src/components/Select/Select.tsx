@@ -26,6 +26,8 @@ import { useInconelAdapters } from '../../adapters'
 import { classNames as mergeClassNames } from '../shared/classNames'
 import '../shared/field.css'
 import '../shared/field-controls.css'
+import '../shared/sizes.css'
+import type { ControlSize } from '../shared/types'
 import './styles.css'
 
 import FieldFeedback from '../FieldFeedback/FieldFeedback'
@@ -108,7 +110,7 @@ export interface SelectProps<T extends object> extends FieldFeedbackContentProps
   maxMenuHeight?: number
   inputClassName?: string
   labelClassName?: string
-  size?: string
+  size?: ControlSize
   required?: boolean
   components?: Record<string, unknown>
 }
@@ -166,7 +168,7 @@ function SelectInner<T extends object>(
     sortByUppercase,
     inputClassName,
     labelClassName,
-    size,
+    size = 'md',
     required,
   }: SelectProps<T>,
   forwardedRef: ForwardedRef<SelectHandle>,
@@ -604,7 +606,8 @@ function SelectInner<T extends object>(
       ref={rootRef}
       className={mergeClassNames(
         'inconel-select-field',
-        size && `inconel-select-field--${size}`,
+        `inconel-size-${size}`,
+        `inconel-select-field--${size}`,
         className,
         classNames.root,
       )}

@@ -13,7 +13,7 @@
 }
 
 .inconel-socket-status.inconel-is-connected i {
-  background: #12b76a;
+  background: var(--inconel-success-bg-color);
 }
 
 .inconel-socket-status.inconel-is-disconnected i {

@@ -1,0 +1,5 @@
+body {
+  background: var(--inconel-color-surface);
+  color: var(--inconel-color-text);
+  transition: background-color 0.15s ease, color 0.15s ease;
+}

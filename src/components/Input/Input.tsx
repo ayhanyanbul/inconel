@@ -16,6 +16,8 @@ import FieldFeedback from '../FieldFeedback/FieldFeedback'
 import type { FieldFeedbackContentProps } from '../FieldFeedback/FieldFeedback'
 import '../shared/field.css'
 import '../shared/field-controls.css'
+import '../shared/sizes.css'
+import type { ControlSize } from '../shared/types'
 import './styles.css'
 import {
   applyInputMask,
@@ -126,6 +128,7 @@ export interface InputProps extends NativeInputProps, FieldFeedbackContentProps 
   readOnly?: boolean
   clearButtonLabel?: string
   readOnlyEmptyValue?: ReactNode
+  size?: ControlSize
 }
 
 const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
@@ -168,6 +171,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
     readOnly = false,
     clearButtonLabel,
     readOnlyEmptyValue = null,
+    size = 'md',
     autoComplete = 'off',
     'aria-describedby': ariaDescribedBy,
     ...inputProps
@@ -285,7 +289,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
 
   if (readOnly) {
     return (
-      <div className={['inconel-field', fullWidth ? 'inconel-field--full-width' : '', className ?? ''].join(' ')}>
+      <div className={['inconel-field', `inconel-size-${size}`, fullWidth ? 'inconel-field--full-width' : '', className ?? ''].join(' ')}>
         {label && <span className={['inconel-field__label', labelClassName ?? ''].join(' ')}>{label}</span>}
         <div className="inconel-input-readonly" aria-label={label}>
           {formattedValue || readOnlyEmptyValue}
@@ -295,7 +299,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
   }
 
   return (
-    <div className={['inconel-field', fullWidth ? 'inconel-field--full-width' : '', className ?? ''].join(' ')}>
+    <div className={['inconel-field', `inconel-size-${size}`, fullWidth ? 'inconel-field--full-width' : '', className ?? ''].join(' ')}>
       {label && (
         <label className={['inconel-field__label', labelClassName ?? ''].join(' ')} htmlFor={inputId}>
           {label}{required && <span className="inconel-field__required" aria-hidden="true"> *</span>}

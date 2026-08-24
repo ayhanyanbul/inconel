@@ -75,7 +75,7 @@
 .inconel-data-grid--hoverable
   .inconel-data-grid__item:hover
   :is(.inconel-data-grid__label, .inconel-data-grid__value) {
-  background: #f2f4ff;
+  background: var(--inconel-color-primary-subtle);
 }
 
 .inconel-data-grid--bordered {
