@@ -1,0 +1,218 @@
+@keyframes inconel-floating-panel-fade {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes inconel-floating-panel-to-left {
+  0% {
+    margin-left: 20px;
+    opacity: 0;
+  }
+
+  100% {
+    margin-left: 0;
+    opacity: 1;
+  }
+}
+
+@keyframes inconel-floating-panel-to-right {
+  0% {
+    margin-left: -20px;
+    opacity: 0;
+  }
+
+  100% {
+    margin-left: 0;
+    opacity: 1;
+  }
+}
+
+@keyframes inconel-floating-panel-to-top {
+  0% {
+    margin-top: 20px;
+    opacity: 0;
+  }
+
+  100% {
+    margin-top: 0;
+    opacity: 1;
+  }
+}
+
+@keyframes inconel-floating-panel-to-bottom {
+  0% {
+    margin-top: -20px;
+    opacity: 0;
+  }
+
+  100% {
+    margin-top: 0;
+    opacity: 1;
+  }
+}
+
+.inconel-floating-panel {
+  position: absolute;
+  top: 0;
+  left: 0;
+  box-sizing: border-box;
+  width: auto;
+  height: auto;
+  border: 1px solid var(--inconel-color-border);
+  border-radius: var(--inconel-radius-sm);
+}
+
+.inconel-floating-panel.inconel-is-holding {
+  opacity: 0.6;
+}
+
+.inconel-floating-panel.inconel-is-watched {
+  transition: transform 0.2s ease-out;
+}
+
+.inconel-floating-panel.inconel-is-animation-fade {
+  animation: inconel-floating-panel-fade 0.2s ease-out;
+}
+
+.inconel-floating-panel.inconel-is-animated-left {
+  animation: inconel-floating-panel-to-left 0.4s ease-out;
+}
+
+.inconel-floating-panel.inconel-is-animated-right {
+  animation: inconel-floating-panel-to-right 0.4s ease-out;
+}
+
+.inconel-floating-panel.inconel-is-animated-top {
+  animation: inconel-floating-panel-to-top 0.4s ease-out;
+}
+
+.inconel-floating-panel.inconel-is-animated-bottom {
+  animation: inconel-floating-panel-to-bottom 0.4s ease-out;
+}
+
+.inconel-floating-panel__drag-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  cursor: grab;
+}
+
+.inconel-floating-panel__content {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: var(--inconel-radius-sm);
+  background: var(--inconel-color-surface);
+}
+
+.inconel-floating-panel__close {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  color: var(--inconel-color-text-muted);
+  cursor: pointer;
+  font-size: 14px;
+  line-height: 1;
+}
+
+.inconel-floating-panel__close:hover {
+  color: var(--inconel-color-danger);
+}
+
+.inconel-floating-panel:not(.inconel-triangle-off)::before {
+  position: absolute;
+  z-index: -1;
+  box-sizing: border-box;
+  width: 0;
+  height: 0;
+  border: 5px solid var(--inconel-color-surface);
+  outline: 1px solid var(--inconel-color-border);
+  content: '';
+  transform-origin: 50% 50%;
+}
+
+.inconel-floating-panel.top-left::before {
+  top: -5px;
+  left: 10px;
+  transform: rotate(135deg);
+}
+
+.inconel-floating-panel.top-center::before {
+  top: -5px;
+  left: calc(50% - 5px);
+  transform: rotate(135deg);
+}
+
+.inconel-floating-panel.top-right::before {
+  top: -5px;
+  right: 10px;
+  transform: rotate(135deg);
+}
+
+.inconel-floating-panel.bottom-left::before {
+  bottom: -5px;
+  left: 10px;
+  transform: rotate(-45deg);
+}
+
+.inconel-floating-panel.bottom-center::before {
+  bottom: -5px;
+  left: calc(50% - 5px);
+  transform: rotate(-45deg);
+}
+
+.inconel-floating-panel.bottom-right::before {
+  right: 10px;
+  bottom: -5px;
+  transform: rotate(-45deg);
+}
+
+.inconel-floating-panel.left-top::before {
+  top: 10px;
+  left: -5px;
+  transform: rotate(45deg);
+}
+
+.inconel-floating-panel.left-center::before {
+  top: calc(50% - 5px);
+  left: -5px;
+  transform: rotate(45deg);
+}
+
+.inconel-floating-panel.left-bottom::before {
+  bottom: 10px;
+  left: -5px;
+  transform: rotate(45deg);
+}
+
+.inconel-floating-panel.right-top::before {
+  top: 10px;
+  right: -5px;
+  transform: rotate(-135deg);
+}
+
+.inconel-floating-panel.right-center::before {
+  top: calc(50% - 5px);
+  right: -5px;
+  transform: rotate(-135deg);
+}
+
+.inconel-floating-panel.right-bottom::before {
+  right: -5px;
+  bottom: 10px;
+  transform: rotate(-135deg);
+}

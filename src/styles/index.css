@@ -1,46 +1,52 @@
 :root {
-  --inconel-font-family: Inter, ui-sans-serif, system-ui, -apple-system, sans-serif;
-
   --inconel-color-primary: #6366f1;
   --inconel-color-primary-hover: #4f46e5;
   --inconel-color-primary-subtle: #eef2ff;
   --inconel-primary-text-color: #ffffff;
   --inconel-primary-text-hover-color: #ffffff;
   --inconel-primary-border-color: #6366f1;
+  --inconel-primary-shadow-color: rgb(99 102 241 / 35%);
 
   --inconel-secondary-bg-color: #c3c3cc;
   --inconel-secondary-bg-hover-color: #d5d4df;
   --inconel-secondary-text-color: #535457;
   --inconel-secondary-text-hover-color: #6d6e72;
   --inconel-secondary-border-color: #9c9da1;
+  --inconel-secondary-shadow-color: rgb(156 157 161 / 35%);
 
   --inconel-danger-bg-color: var(--inconel-color-danger);
   --inconel-danger-bg-hover-color: #b42318;
   --inconel-danger-text-color: #ffffff;
   --inconel-danger-text-hover-color: #ffffff;
   --inconel-danger-border-color: var(--inconel-color-danger);
+  --inconel-danger-shadow-color: rgb(217 45 32 / 35%);
 
   --inconel-warning-bg-color: #fdb022;
   --inconel-warning-bg-hover-color: #f79009;
   --inconel-warning-text-color: #101828;
   --inconel-warning-text-hover-color: #101828;
   --inconel-warning-border-color: #fdb022;
+  --inconel-warning-shadow-color: rgb(253 176 34 / 35%);
+  --inconel-warning-outline-text-color: #b54708;
 
   --inconel-success-bg-color: #12b76a;
   --inconel-success-bg-hover-color: #039855;
   --inconel-success-text-color: #ffffff;
   --inconel-success-text-hover-color: #ffffff;
   --inconel-success-border-color: #12b76a;
+  --inconel-success-shadow-color: rgb(18 183 106 / 35%);
+  --inconel-success-outline-text-color: #027a48;
 
   --inconel-dark-bg-color: #344054;
   --inconel-dark-bg-hover-color: #1d2939;
   --inconel-dark-text-color: #ffffff;
   --inconel-dark-text-hover-color: #ffffff;
   --inconel-dark-border-color: #344054;
+  --inconel-dark-shadow-color: rgb(52 64 84 / 35%);
 
   --inconel-svg-color: #ffffff;
 
-  --inconel-color-text: #101828;
+  --inconel-color-text: #000000;
   --inconel-color-text-muted: #667085;
   --inconel-color-placeholder: #98a2b3;
   --inconel-color-border: #d0d5dd;
@@ -64,30 +70,38 @@
     --inconel-primary-text-color: #ffffff;
     --inconel-primary-text-hover-color: #ffffff;
     --inconel-primary-border-color: #818cf8;
+    --inconel-primary-shadow-color: rgb(129 140 248 / 35%);
 
     --inconel-secondary-bg-color: #333741;
     --inconel-secondary-bg-hover-color: #3f434e;
     --inconel-secondary-text-color: #cecfd3;
     --inconel-secondary-text-hover-color: #ffffff;
     --inconel-secondary-border-color: #4a4f59;
+    --inconel-secondary-shadow-color: rgb(0 0 0 / 45%);
 
     --inconel-danger-bg-hover-color: #fda29b;
     --inconel-danger-text-color: #ffffff;
     --inconel-danger-text-hover-color: #ffffff;
+    --inconel-danger-shadow-color: rgb(249 112 102 / 35%);
 
     --inconel-warning-bg-hover-color: #ffc94d;
     --inconel-warning-text-color: #101828;
     --inconel-warning-text-hover-color: #101828;
+    --inconel-warning-shadow-color: rgb(253 176 34 / 35%);
+    --inconel-warning-outline-text-color: #fdb022;
 
     --inconel-success-bg-hover-color: #32d583;
     --inconel-success-text-color: #ffffff;
     --inconel-success-text-hover-color: #ffffff;
+    --inconel-success-shadow-color: rgb(50 213 131 / 35%);
+    --inconel-success-outline-text-color: #32d583;
 
     --inconel-dark-bg-color: #475467;
     --inconel-dark-bg-hover-color: #667085;
     --inconel-dark-text-color: #ffffff;
     --inconel-dark-text-hover-color: #ffffff;
     --inconel-dark-border-color: #475467;
+    --inconel-dark-shadow-color: rgb(0 0 0 / 45%);
 
     --inconel-color-text: #f2f4f7;
     --inconel-color-text-muted: #94a3b8;
@@ -111,30 +125,38 @@
   --inconel-primary-text-color: #ffffff;
   --inconel-primary-text-hover-color: #ffffff;
   --inconel-primary-border-color: #818cf8;
+  --inconel-primary-shadow-color: rgb(129 140 248 / 35%);
 
   --inconel-secondary-bg-color: #333741;
   --inconel-secondary-bg-hover-color: #3f434e;
   --inconel-secondary-text-color: #cecfd3;
   --inconel-secondary-text-hover-color: #ffffff;
   --inconel-secondary-border-color: #4a4f59;
+  --inconel-secondary-shadow-color: rgb(0 0 0 / 45%);
 
   --inconel-danger-bg-hover-color: #fda29b;
   --inconel-danger-text-color: #ffffff;
   --inconel-danger-text-hover-color: #ffffff;
+  --inconel-danger-shadow-color: rgb(249 112 102 / 35%);
 
   --inconel-warning-bg-hover-color: #ffc94d;
   --inconel-warning-text-color: #101828;
   --inconel-warning-text-hover-color: #101828;
+  --inconel-warning-shadow-color: rgb(253 176 34 / 35%);
+  --inconel-warning-outline-text-color: #fdb022;
 
   --inconel-success-bg-hover-color: #32d583;
   --inconel-success-text-color: #ffffff;
   --inconel-success-text-hover-color: #ffffff;
+  --inconel-success-shadow-color: rgb(50 213 131 / 35%);
+  --inconel-success-outline-text-color: #32d583;
 
   --inconel-dark-bg-color: #475467;
   --inconel-dark-bg-hover-color: #667085;
   --inconel-dark-text-color: #ffffff;
   --inconel-dark-text-hover-color: #ffffff;
   --inconel-dark-border-color: #475467;
+  --inconel-dark-shadow-color: rgb(0 0 0 / 45%);
 
   --inconel-color-text: #f2f4f7;
   --inconel-color-text-muted: #94a3b8;

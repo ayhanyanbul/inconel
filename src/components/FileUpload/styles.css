@@ -2,7 +2,6 @@
   display: grid;
   gap: 10px;
   color: var(--inconel-color-text-muted);
-  font-family: var(--inconel-font-family);
 }
 
 .inconel-file-upload__input {

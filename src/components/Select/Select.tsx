@@ -585,7 +585,7 @@ function SelectInner<T extends object>(
       }}
       id={listboxId}
       role="listbox"
-      aria-labelledby={labelId}
+      aria-labelledby={label ? labelId : undefined}
       className={mergeClassNames(
         'inconel-select-menu',
         menuPortalTarget && 'inconel-select-menu-portal',
@@ -613,15 +613,17 @@ function SelectInner<T extends object>(
       )}
       style={styles.root}
     >
-      <label
-        id={labelId}
-        htmlFor={inputId}
-        className={mergeClassNames(classNames.label, labelClassName)}
-        style={styles.label}
-      >
-        {label}
-        {componentRequired && <span aria-hidden="true"> *</span>}
-      </label>
+      {label && (
+        <label
+          id={labelId}
+          htmlFor={inputId}
+          className={mergeClassNames(classNames.label, labelClassName)}
+          style={styles.label}
+        >
+          {label}
+          {componentRequired && <span aria-hidden="true"> *</span>}
+        </label>
+      )}
       <div
         ref={refs.setReference}
         className={mergeClassNames(

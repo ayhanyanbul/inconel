@@ -29,6 +29,10 @@ const meta = {
       control: 'select',
       options: ['ceil', 'floor', 'round'],
     },
+    variant: {
+      control: 'select',
+      options: ['outlined', 'plain'],
+    },
   },
   args: {
     label: 'Ad Soyad',
@@ -40,6 +44,14 @@ export default meta
 type Story = StoryObj<typeof meta>
 
 export const Default: Story = {}
+
+export const Plain: Story = {
+  args: { variant: 'plain' },
+}
+
+export const PlainWithError: Story = {
+  args: { variant: 'plain', errorMessage: 'Bu alan zorunludur' },
+}
 
 export const Email: Story = {
   args: {

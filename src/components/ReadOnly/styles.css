@@ -2,7 +2,6 @@
   display: grid;
   gap: 6px;
   color: var(--inconel-color-text);
-  font-family: var(--inconel-font-family);
 }
 
 .inconel-read-only__label {

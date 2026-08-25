@@ -29,6 +29,11 @@ export const FirstTabActive: Story = {
   args: { activeKey: 'all' },
 }
 
+export const FullWidth: Story = {
+  args: { fullWidth: true },
+  parameters: { layout: 'padded' },
+}
+
 export const WithoutCounts: Story = {
   args: {
     tabs: [

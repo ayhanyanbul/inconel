@@ -4,7 +4,6 @@
   width: 100%;
   border-radius: var(--inconel-radius-sm);
   color: var(--inconel-color-text);
-  font-family: var(--inconel-font-family);
 }
 
 .inconel-data-grid__container {

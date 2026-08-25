@@ -29,7 +29,7 @@ Inconel ayrıca şu bağımsız ve TypeScript tipli bileşen ailelerini sunar:
 `LoaderMini`, `DotLoader`, `ReadOnly`, `FileUpload`, `FileUploadText`,
 `DragDropUpload`, `DndFileUpload`, `DatePicker`, `CurrencyInput`, `TextInput`,
 `InputText`, `Table`, `DataGrid`, `ExcelTable`, `HTMLTable`, `Filter`,
-`MultiSelect`, `MultiSelectWithCheckbox`, `HtmlEditor`, `TextEditor`,
+`MultiSelect`, `MultiSelectWithCheckbox`,
 `SocketStatus`, `Option` ve `OptionWithIcon`.
 
 Bu bileşenler uygulamaya özel store, servis, i18n veya asset bağımlılığı
@@ -222,9 +222,11 @@ Override Inconel design tokens in your application:
   --inconel-color-primary: #7c3aed;
   --inconel-color-primary-hover: #6d28d9;
   --inconel-radius-md: 10px;
-  --inconel-font-family: Inter, sans-serif;
 }
 ```
+
+Inconel does not set a `font-family` of its own — every component inherits
+the font from its surrounding application.
 
 Select additionally supports part-based `classNames` and `styles` props.
 

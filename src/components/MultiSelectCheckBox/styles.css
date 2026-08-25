@@ -1,0 +1,189 @@
+.inconel-multi-select-checkbox {
+  position: relative;
+  width: 100%;
+  color: var(--inconel-color-text);
+}
+
+.inconel-multi-select-checkbox.inconel-is-disabled {
+  pointer-events: none;
+}
+
+.inconel-multi-select-checkbox__label {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--inconel-color-text-muted);
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+.inconel-multi-select-checkbox__input-wrap {
+  position: relative;
+}
+
+.inconel-multi-select-checkbox__loader-cover {
+  position: absolute;
+  z-index: 1;
+  display: grid;
+  width: 100%;
+  height: 100%;
+  border-radius: var(--inconel-radius-sm);
+  background: rgb(255 255 255 / 60%);
+  place-items: center;
+}
+
+.inconel-multi-select-checkbox__input-container {
+  position: relative;
+  cursor: pointer;
+}
+
+.inconel-multi-select-checkbox.inconel-is-disabled
+  .inconel-multi-select-checkbox__input-container {
+  cursor: not-allowed;
+}
+
+.inconel-multi-select-checkbox__input {
+  width: 100%;
+  height: 40px;
+  padding: 0 32px 0 12px;
+  overflow: hidden;
+  border: 1px solid var(--inconel-color-border);
+  border-radius: var(--inconel-radius-sm);
+  background: var(--inconel-color-surface);
+  color: var(--inconel-color-text);
+  font-size: 0.9rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.inconel-multi-select-checkbox__input::placeholder {
+  color: var(--inconel-color-placeholder);
+  opacity: 1;
+}
+
+.inconel-multi-select-checkbox.inconel-is-error .inconel-multi-select-checkbox__input {
+  border-color: var(--inconel-color-danger);
+}
+
+.inconel-multi-select-checkbox__indicator {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  width: 12px;
+  height: 12px;
+  border-right: 2px solid var(--inconel-color-text-muted);
+  border-bottom: 2px solid var(--inconel-color-text-muted);
+  transform: translateY(-70%) rotate(45deg);
+  pointer-events: none;
+}
+
+.inconel-multi-select-checkbox__panel-wrap {
+  position: absolute;
+  z-index: 20;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  margin-top: 6px;
+}
+
+.inconel-multi-select-checkbox.inconel-is-open-top
+  .inconel-multi-select-checkbox__panel-wrap {
+  top: auto;
+  bottom: 100%;
+  margin-top: 0;
+  margin-bottom: 6px;
+}
+
+.inconel-multi-select-checkbox__panel-wrap--portal {
+  margin-top: 8px;
+}
+
+.inconel-multi-select-checkbox__panel-wrap--portal.inconel-is-open-top {
+  margin-top: 0;
+  transform: translateY(-100%);
+}
+
+.inconel-multi-select-checkbox__options {
+  max-height: 240px;
+  overflow: auto;
+  border: 1px solid var(--inconel-color-border);
+  border-radius: var(--inconel-radius-sm);
+  background: var(--inconel-color-surface);
+  box-shadow: var(--inconel-shadow-menu);
+}
+
+.inconel-multi-select-checkbox__search {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  padding: 8px;
+  border-bottom: 1px solid var(--inconel-color-border);
+  background: var(--inconel-color-surface);
+}
+
+.inconel-multi-select-checkbox__search-input {
+  width: 100%;
+  height: 30px;
+  padding: 4px 9px;
+  border: 1px solid var(--inconel-color-border);
+  border-radius: var(--inconel-radius-sm);
+  background: var(--inconel-color-surface-muted);
+  color: var(--inconel-color-text);
+  outline: none;
+}
+
+.inconel-multi-select-checkbox__search-input:focus {
+  border-color: var(--inconel-color-primary);
+  box-shadow: var(--inconel-shadow-focus);
+}
+
+.inconel-multi-select-checkbox__option-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 10px;
+  cursor: pointer;
+}
+
+.inconel-multi-select-checkbox__option-item label {
+  overflow: hidden;
+  width: 100%;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.inconel-multi-select-checkbox__option-item:hover,
+.inconel-multi-select-checkbox__option-item.inconel-is-selected {
+  background: var(--inconel-color-surface-muted);
+}
+
+.inconel-multi-select-checkbox__option-item.inconel-is-disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+.inconel-multi-select-checkbox__nodata {
+  position: absolute;
+  z-index: 20;
+  top: 100%;
+  display: flex;
+  width: 100%;
+  min-height: 60px;
+  margin-top: 6px;
+  padding: 12px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--inconel-color-border);
+  border-radius: var(--inconel-radius-sm);
+  background: var(--inconel-color-surface);
+  color: var(--inconel-color-text-muted);
+  text-align: center;
+}
+
+.inconel-multi-select-checkbox__error {
+  display: block;
+  margin-top: 4px;
+  color: var(--inconel-color-danger);
+  font-size: 0.78rem;
+}

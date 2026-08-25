@@ -21,6 +21,7 @@ export interface SlideTabsProps {
   activeKey?: string | number | null
   onChange?: (key: string | number) => void
   className?: string | null
+  fullWidth?: boolean
 }
 
 export function SlideTabs({
@@ -28,6 +29,7 @@ export function SlideTabs({
   activeKey,
   onChange,
   className,
+  fullWidth = false,
 }: SlideTabsProps) {
   const refs = useRef<Record<string, HTMLButtonElement | null>>({})
   const [indicator, setIndicator] = useState({ left: 0, width: 0 })
@@ -49,7 +51,13 @@ export function SlideTabs({
   if (!visibleTabs.length) return null
 
   return (
-    <div className={classNames('inconel-slide-tabs', className)}>
+    <div
+      className={classNames(
+        'inconel-slide-tabs',
+        fullWidth && 'inconel-slide-tabs--full-width',
+        className,
+      )}
+    >
       <div
         className="inconel-slide-tabs__indicator"
         style={{

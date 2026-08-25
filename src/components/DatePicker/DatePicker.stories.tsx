@@ -41,6 +41,19 @@ export const Empty: Story = {
   args: { value: null, label: 'Doğum Tarihi' },
 }
 
+export const WithoutLabel: Story = {
+  args: { label: undefined },
+}
+
+export const FullWidthContainer: Story = {
+  parameters: { layout: 'padded' },
+  render: (args) => (
+    <div style={{ width: 480 }}>
+      <DatePicker {...args} />
+    </div>
+  ),
+}
+
 export const Disabled: Story = {
   args: { disabled: true },
 }

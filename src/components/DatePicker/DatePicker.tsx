@@ -165,7 +165,7 @@ export function DatePicker({
         className,
       )}
     >
-      {!removeLabel && label !== null && label !== false && (
+      {!removeLabel && Boolean(label) && (
         <label
           htmlFor={id}
           className={classNames(
@@ -173,7 +173,7 @@ export function DatePicker({
             labelClassName,
           )}
         >
-          {label || <span>&nbsp;</span>}
+          {label}
           {multiple && (
             <span className="inconel-date-picker__multiple" title={String(multiple)}>
               {multiple}

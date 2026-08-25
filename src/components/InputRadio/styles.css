@@ -1,0 +1,60 @@
+.inconel-input-radio {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--inconel-color-text);
+}
+
+.inconel-input-radio.inconel-is-disabled {
+  opacity: 0.6;
+}
+
+.inconel-input-radio__input {
+  position: absolute;
+  overflow: hidden;
+  width: 1px;
+  height: 1px;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.inconel-input-radio__control {
+  display: grid;
+  width: 18px;
+  height: 18px;
+  flex: 0 0 auto;
+  place-items: center;
+  border: 1px solid var(--inconel-color-border);
+  border-radius: 50%;
+  background: var(--inconel-color-surface);
+  cursor: pointer;
+}
+
+.inconel-input-radio__input:checked + .inconel-input-radio__control {
+  border-color: var(--inconel-color-primary);
+  background: var(--inconel-color-primary);
+}
+
+.inconel-input-radio__input:checked + .inconel-input-radio__control::after {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #fff;
+  content: '';
+}
+
+.inconel-input-radio__input:focus-visible + .inconel-input-radio__control {
+  box-shadow: var(--inconel-shadow-focus);
+}
+
+.inconel-input-radio.inconel-is-disabled .inconel-input-radio__control {
+  cursor: not-allowed;
+}
+
+.inconel-input-radio__label {
+  cursor: pointer;
+}
+
+.inconel-input-radio.inconel-is-disabled .inconel-input-radio__label {
+  cursor: not-allowed;
+}

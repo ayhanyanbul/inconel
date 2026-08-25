@@ -2,7 +2,6 @@
   display: grid;
   gap: 8px;
   color: var(--inconel-color-text);
-  font-family: var(--inconel-font-family);
 }
 
 .inconel-drag-drop-upload__label {

@@ -33,6 +33,10 @@ export interface ButtonProps
   fullWidth?: boolean
   variant?: 'primary' | 'secondary' | 'danger' | 'ghost' | 'warning' | 'dark'
   size?: ControlSize
+  pill?: boolean
+  count?: ReactNode
+  progress?: number | null
+  progressColor?: string | null
 }
 
 export function Button({
@@ -54,6 +58,10 @@ export function Button({
   className,
   children,
   size = 'md',
+  pill = false,
+  count,
+  progress,
+  progressColor,
   ...props
 }: ButtonProps) {
   const resolvedType = buttonType ?? variant
@@ -67,7 +75,9 @@ export function Button({
   if (!render) return null
 
   const content = label ?? children
-  const iconNode = icon ? (
+  const progressWidth =
+    typeof progress === 'number' ? Math.max(0, Math.min(100, progress)) : null
+  const iconNode = typeof icon === 'string' && icon ? (
     <span
       className={classNames(
         'inconel-button__icon',
@@ -81,6 +91,9 @@ export function Button({
     >
       <Svg
         src={icon}
+        renumerateIRIElements={false}
+        loading={() => null}
+        fallback={() => null}
         beforeInjection={(svg) => {
           if (iconWidth) svg.setAttribute('width', String(iconWidth))
           if (iconHeight) svg.setAttribute('height', String(iconHeight))
@@ -103,18 +116,30 @@ export function Button({
         `inconel-size-${size}`,
         BUTTON_TYPE_CLASS_NAMES[resolvedType],
         fullWidth && 'inconel-button--full-width',
+        progressWidth !== null && 'inconel-button--has-progress',
+        pill && 'inconel-button--pill',
         loading && 'inconel-is-loading',
         disabled && 'inconel-is-disabled',
         isActive && 'inconel-is-active',
         className,
       )}
     >
+      {progressWidth !== null && (
+        <span
+          className="inconel-button__progress"
+          style={{
+            width: `${progressWidth}%`,
+            background: progressColor ?? undefined,
+          }}
+        />
+      )}
       {loading && <span className="inconel-button__spinner" aria-hidden="true" />}
       {!iconRight && iconNode}
       {content !== undefined && (
         <span className="inconel-button__title">{content}</span>
       )}
       {iconRight && iconNode}
+      {count != null && <span className="inconel-button__count">{count}</span>}
     </button>
   )
 }

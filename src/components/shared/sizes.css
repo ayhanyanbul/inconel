@@ -4,6 +4,12 @@
    scale itself, so the five sizes stay numerically consistent across
    Button, Input, Select, Textarea and DatePicker. */
 
+.inconel-size-xxs {
+  --inconel-control-height: 20px;
+  --inconel-control-font-size: 0.6875rem;
+  --inconel-control-padding-x: 6px;
+}
+
 .inconel-size-xs {
   --inconel-control-height: 28px;
   --inconel-control-font-size: 0.75rem;

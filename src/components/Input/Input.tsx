@@ -129,6 +129,7 @@ export interface InputProps extends NativeInputProps, FieldFeedbackContentProps 
   clearButtonLabel?: string
   readOnlyEmptyValue?: ReactNode
   size?: ControlSize
+  variant?: 'outlined' | 'plain'
 }
 
 const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
@@ -172,6 +173,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
     clearButtonLabel,
     readOnlyEmptyValue = null,
     size = 'md',
+    variant = 'outlined',
     autoComplete = 'off',
     'aria-describedby': ariaDescribedBy,
     ...inputProps
@@ -305,7 +307,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
           {label}{required && <span className="inconel-field__required" aria-hidden="true"> *</span>}
         </label>
       )}
-      <div className={['inconel-input-control', visibleError ? 'inconel-is-invalid' : '', disabled ? 'inconel-is-disabled' : ''].join(' ')}>
+      <div className={['inconel-input-control', variant === 'plain' ? 'inconel-input-control--plain' : '', visibleError ? 'inconel-is-invalid' : '', disabled ? 'inconel-is-disabled' : ''].join(' ')}>
         {startAdornment && <span className="inconel-input-adornment" aria-hidden="true">{startAdornment}</span>}
         <input
           {...inputProps}

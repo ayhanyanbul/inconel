@@ -8,7 +8,6 @@
   border-spacing: 0;
   border-collapse: collapse;
   color: var(--inconel-color-text);
-  font-family: var(--inconel-font-family);
 }
 
 .inconel-table th,

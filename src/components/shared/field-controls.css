@@ -32,6 +32,29 @@
   cursor: not-allowed;
 }
 
+.inconel-input-control--plain {
+  border-color: transparent;
+  background: transparent;
+  box-shadow: none;
+}
+
+.inconel-input-control--plain:focus-within {
+  border-color: transparent;
+  border-bottom-color: var(--inconel-color-primary);
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.inconel-input-control--plain.inconel-is-invalid {
+  border-color: transparent;
+  border-bottom-color: var(--inconel-color-danger);
+  border-radius: 0;
+}
+
+.inconel-input-control--plain.inconel-is-disabled {
+  background: transparent;
+}
+
 .inconel-input,
 .inconel-select-control input {
   box-sizing: border-box;
@@ -43,7 +66,6 @@
   outline: 0;
   color: var(--inconel-color-text);
   background: transparent;
-  font-family: inherit;
   font-size: var(--inconel-control-font-size, inherit);
 }
 

@@ -3,7 +3,6 @@
   align-items: center;
   gap: 8px;
   color: var(--inconel-color-text);
-  font-family: var(--inconel-font-family);
   cursor: pointer;
 }
 

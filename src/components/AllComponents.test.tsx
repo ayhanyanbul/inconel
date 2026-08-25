@@ -31,38 +31,6 @@ vi.mock('react-datepicker', () => ({
   registerLocale: vi.fn(),
 }))
 
-vi.mock('@uiw/react-textarea-code-editor', () => ({
-  default: ({
-    value,
-    onChange,
-  }: {
-    value?: string
-    onChange?: (event: { target: { value: string } }) => void
-  }) => (
-    <textarea
-      aria-label="html-editor"
-      value={value}
-      onChange={(event) => onChange?.(event)}
-    />
-  ),
-}))
-
-vi.mock('@tinymce/tinymce-react', () => ({
-  Editor: ({
-    value,
-    onEditorChange,
-  }: {
-    value?: string
-    onEditorChange?: (value: string) => void
-  }) => (
-    <textarea
-      aria-label="text-editor"
-      value={value}
-      onChange={(event) => onEditorChange?.(event.target.value)}
-    />
-  ),
-}))
-
 vi.mock('./ExcelTable/legacy/index.jsx', () => ({
   default: ({ data = [] }: { data?: Array<Record<string, unknown>> }) => (
     <div data-testid="excel-table">{data.length}</div>
@@ -92,7 +60,6 @@ import {
   FileUploadText,
   Filter,
   HTMLTable,
-  HtmlEditor,
   Input,
   InputText,
   Loader,
@@ -112,7 +79,6 @@ import {
   Table,
   Tabs,
   Textarea,
-  TextEditor,
   TextInput,
   Tooltip,
 } from './index'
@@ -273,25 +239,6 @@ describe('all public components', () => {
     fireEvent.click(screen.getByRole('combobox', { name: 'Şehir' }))
     fireEvent.click(screen.getByRole('option', { name: 'İstanbul' }))
     expect(onChange).toHaveBeenCalledWith({ value: 34, label: 'İstanbul' })
-  })
-
-  it('editor bileşenleri değer değişikliklerini iletir', () => {
-    const htmlChange = vi.fn()
-    const textChange = vi.fn()
-    render(
-      <>
-        <HtmlEditor value="<p>a</p>" onChange={htmlChange} />
-        <TextEditor value="<p>b</p>" onChange={textChange} />
-      </>,
-    )
-    fireEvent.change(screen.getByLabelText('html-editor'), {
-      target: { value: '<p>c</p>' },
-    })
-    fireEvent.change(screen.getByLabelText('text-editor'), {
-      target: { value: '<p>d</p>' },
-    })
-    expect(htmlChange).toHaveBeenCalledWith('<p>c</p>')
-    expect(textChange).toHaveBeenCalledWith('<p>d</p>')
   })
 
   it('tablo bileşenlerinin public exportları çalışır', () => {

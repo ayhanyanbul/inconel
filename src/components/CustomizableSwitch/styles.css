@@ -9,7 +9,7 @@
 }
 
 .inconel-customizable-switch.inconel-is-checked {
-  background: var(--inconel-color-primary);
+  background: color-mix(in srgb, var(--inconel-color-primary) 18%, white);
 }
 
 .inconel-customizable-switch.inconel-is-disabled {

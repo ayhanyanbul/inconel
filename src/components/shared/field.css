@@ -2,7 +2,6 @@
 .inconel-select-field {
   position: relative;
   color: var(--inconel-color-text);
-  font-family: var(--inconel-font-family);
 }
 
 .inconel-field--full-width {

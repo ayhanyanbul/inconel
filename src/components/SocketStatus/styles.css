@@ -3,7 +3,6 @@
   align-items: center;
   gap: 7px;
   color: var(--inconel-color-text-muted);
-  font-family: var(--inconel-font-family);
 }
 
 .inconel-socket-status i {

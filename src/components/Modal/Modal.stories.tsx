@@ -2,6 +2,7 @@ import { useState } from 'react'
 import type { Meta, StoryObj } from '@storybook/react-vite'
 
 import { Button } from '../Button'
+import { Select } from '../Select'
 import { Modal } from './Modal'
 import type { ModalProps } from './Modal'
 
@@ -96,6 +97,44 @@ export const NotScrollable: Story = {
 
 export const LargeSize: Story = {
   args: { size: 'lg' },
+}
+
+export const LongContentWithFooter: Story = {
+  args: {
+    children: (
+      <>
+        {Array.from({ length: 40 }, (_, index) => (
+          <p key={index}>Satır {index + 1}: uzun içerik örneği.</p>
+        ))}
+      </>
+    ),
+    okText: 'Kaydet',
+    okAction: () => {},
+    cancelText: 'Vazgeç',
+    cancelAction: () => {},
+  },
+}
+
+export const FullSize: Story = {
+  args: { fullSize: true },
+}
+
+export const WithSelect: Story = {
+  args: {
+    children: (
+      <Select
+        label="Şehir"
+        options={[
+          { value: 1, label: 'İstanbul' },
+          { value: 2, label: 'Ankara' },
+          { value: 3, label: 'İzmir' },
+        ]}
+        menuPortalTarget={
+          typeof document !== 'undefined' ? document.body : null
+        }
+      />
+    ),
+  },
 }
 
 export const Closed: Story = {

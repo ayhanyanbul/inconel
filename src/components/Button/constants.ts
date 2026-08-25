@@ -21,6 +21,12 @@ export const BUTTON_TYPES = [
   'squareDark',
   'squareSecondary',
   'ghost',
+  'outlinePrimary',
+  'outlineSecondary',
+  'outlineDanger',
+  'outlineWarning',
+  'outlineSuccess',
+  'outlineDark',
 ] as const
 
 export type ButtonType = (typeof BUTTON_TYPES)[number]

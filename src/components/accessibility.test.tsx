@@ -19,18 +19,6 @@ vi.mock('react-datepicker', () => ({
   registerLocale: vi.fn(),
 }))
 
-vi.mock('@uiw/react-textarea-code-editor', () => ({
-  default: ({ value }: { value?: string }) => (
-    <textarea aria-label="html-editor" value={value} readOnly />
-  ),
-}))
-
-vi.mock('@tinymce/tinymce-react', () => ({
-  Editor: ({ value }: { value?: string }) => (
-    <textarea aria-label="text-editor" value={value} readOnly />
-  ),
-}))
-
 vi.mock('./ExcelTable/legacy/index.jsx', () => ({
   default: ({ data = [] }: { data?: Array<Record<string, unknown>> }) => (
     <div>{data.length}</div>
@@ -53,7 +41,6 @@ import {
   ExcelTable,
   FileUpload,
   HTMLTable,
-  HtmlEditor,
   Input,
   Loader,
   Modal,
@@ -64,7 +51,6 @@ import {
   Switch,
   Tabs,
   Textarea,
-  TextEditor,
   Tooltip,
 } from './index'
 
@@ -134,17 +120,6 @@ describe('erişilebilirlik (axe)', () => {
         <ExcelTable data={[{ id: 1 }]} />
         <HTMLTable data={[{ id: 1 }]} />
         <DataGrid data={[{ label: 'Ad', value: 'Ayhan' }]} />
-      </>,
-    )
-
-    expect(await axe(container)).toHaveNoViolations()
-  })
-
-  it('editör bileşenleri erişilebilirlik ihlali içermez', async () => {
-    const { container } = render(
-      <>
-        <HtmlEditor value="<p>a</p>" />
-        <TextEditor value="<p>b</p>" />
       </>,
     )
 

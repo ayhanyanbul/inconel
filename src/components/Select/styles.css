@@ -38,11 +38,10 @@
   border-radius: var(--inconel-radius-md);
   background: var(--inconel-color-surface);
   box-shadow: var(--inconel-shadow-menu);
-  font-family: var(--inconel-font-family);
 }
 
 .inconel-select-menu-portal {
-  z-index: 9999;
+  z-index: 10010;
 }
 
 .inconel-select-virtual-content {
@@ -65,8 +64,8 @@
 }
 
 .inconel-select-option.inconel-is-selected {
-  color: var(--inconel-color-primary-hover);
-  font-weight: 600;
+  color: var(--inconel-color-primary);
+  font-weight: 700;
 }
 
 .inconel-select-option.inconel-is-disabled {

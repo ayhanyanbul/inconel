@@ -10,7 +10,8 @@
   border-bottom: 2px solid transparent;
   color: var(--inconel-color-text-muted);
   background: transparent;
-  font: 600 0.9rem var(--inconel-font-family);
+  font-size: 0.9rem;
+  font-weight: 600;
   cursor: pointer;
 }
 
