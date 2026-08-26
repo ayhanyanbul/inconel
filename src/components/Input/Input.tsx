@@ -12,6 +12,7 @@ import {
   type ReactNode,
 } from 'react'
 
+import { useInconelAdapters } from '../../adapters'
 import FieldFeedback from '../FieldFeedback/FieldFeedback'
 import type { FieldFeedbackContentProps } from '../FieldFeedback/FieldFeedback'
 import '../shared/field.css'
@@ -180,6 +181,11 @@ const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
   },
   ref,
 ) {
+  const adapters = useInconelAdapters()
+  const resolvedClearButtonLabel =
+    clearButtonLabel ??
+    String(adapters.translate?.('clear', 'Temizle') ?? 'Temizle')
+
   const generatedId = useId()
   const inputId = id ?? `inconel-input-${generatedId.replace(/:/g, '')}`
   const hintId = `${inputId}-hint`
@@ -353,11 +359,11 @@ const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
           onMouseEnter={(event) => onMouseEnter?.(buildPayload(currentValue, 'mouseenter'), event)}
           onMouseLeave={(event) => onMouseLeave?.(buildPayload(currentValue, 'mouseleave'), event)}
         />
-        {isClearable && !disabled && formattedValue && clearButtonLabel && (
+        {isClearable && !disabled && formattedValue && (
           <button
             type="button"
             className="inconel-input-clear"
-            aria-label={clearButtonLabel}
+            aria-label={resolvedClearButtonLabel}
             onClick={() => {
               setEditingValue('')
               setValidationError(validate(null))

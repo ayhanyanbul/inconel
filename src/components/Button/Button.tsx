@@ -33,6 +33,8 @@ export interface ButtonProps
   fullWidth?: boolean
   variant?: 'primary' | 'secondary' | 'danger' | 'ghost' | 'warning' | 'dark'
   size?: ControlSize
+  fixedHeight?: boolean
+  height?: number | string
   pill?: boolean
   count?: ReactNode
   progress?: number | null
@@ -58,13 +60,19 @@ export function Button({
   className,
   children,
   size = 'md',
+  fixedHeight = true,
+  height,
   pill = false,
   count,
   progress,
   progressColor,
+  style,
   ...props
 }: ButtonProps) {
   const resolvedType = buttonType ?? variant
+  const resolvedStyle = !fixedHeight && height !== undefined
+    ? { ...style, '--inconel-control-height': typeof height === 'number' ? `${height}px` : height } as typeof style
+    : style
   const debouncedClick = useMemo(
     () => createDebouncedCallback(onClick, debounceTime ?? 0),
     [onClick, debounceTime],
@@ -106,6 +114,7 @@ export function Button({
   return (
     <button
       {...props}
+      style={resolvedStyle}
       disabled={disabled || loading}
       aria-pressed={
         typeof isActive === 'boolean' ? isActive : props['aria-pressed']
